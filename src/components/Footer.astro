@@ -1,0 +1,15 @@
+---
+const currentYear = new Date().getFullYear();
+const companyName = "Électricien Belge";
+---
+<footer class="bg-gray-800 text-white mt-auto">
+    <div class="container mx-auto px-6 py-8">
+        <div class="flex flex-col items-center sm:flex-row sm:justify-between">
+            <p>&copy; {currentYear} {companyName}. Tous droits réservés.</p>
+            <div class="flex mt-4 sm:mt-0">
+                <a href="/mentions-legales/" class="px-2 text-sm hover:text-blue-300">Mentions Légales</a>
+                <a href="/politique-de-confidentialite/" class="px-2 text-sm hover:text-blue-300">Politique de Confidentialité</a>
+            </div>
+        </div>
+    </div>
+</footer>

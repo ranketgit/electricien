@@ -1,0 +1,130 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Page specific data - UPDATE THESE
+const pageTitle = "À Propos de Nous";
+const pageDescription = "Découvrez Électricien Belge, votre partenaire de confiance pour tous vos travaux et dépannages électriques en Belgique. Notre engagement : expertise, rapidité et satisfaction client.";
+
+const phoneNumberDisplay = "04XX/XX.XX.XX"; // IMPORTANT: Update this
+const phoneNumberHref = "04XXXXXXXXX";     // IMPORTANT: Update this
+const companyName = "Électricien Belge";
+
+const heroData = {
+    title: `À Propos de ${companyName}`,
+    subtitle: "Votre partenaire expert pour une électricité sûre et performante, partout en Belgique."
+};
+
+const aboutSection1 = {
+    title: "Notre Mission : Votre Sécurité, Notre Priorité",
+    paragraphs: [
+        `${companyName} a été fondé sur une conviction simple : chaque foyer et entreprise en Belgique mérite une installation électrique fiable, sécurisée et conforme aux normes les plus strictes. Depuis nos débuts, nous nous engageons à fournir des services d'électricité exceptionnels, allant du dépannage urgent aux installations complètes et aux mises en conformité rigoureuses.`,
+        "Nous comprenons l'importance cruciale d'une électricité fonctionnelle au quotidien. C'est pourquoi notre équipe d'électriciens qualifiés met tout en œuvre pour intervenir rapidement, diagnostiquer avec précision et apporter des solutions durables à tous vos besoins électriques."
+    ],
+    imageUrl: "/homepage/about-electricien-1.png",
+    imageAlt: "Électricien Belge - Notre équipe d'experts"
+};
+
+const valuesData = {
+    title: "Nos Valeurs Fondamentales",
+    values: [
+        { name: "Sécurité", description: "La sécurité de vos installations et de vos proches est au cœur de chacune de nos interventions. Nous respectons scrupuleusement les normes RGIE." },
+        { name: "Fiabilité", description: "Vous pouvez compter sur notre expertise et notre ponctualité. Nous nous engageons à fournir un travail de qualité, durable dans le temps." },
+        { name: "Transparence", description: "Nous croyons en une communication claire. Nos devis sont détaillés et nous vous expliquons chaque étape de notre intervention." },
+        { name: "Réactivité", description: "Une urgence électrique ? Notre équipe est structurée pour intervenir rapidement partout en Belgique, 24h/24 et 7j/7." }
+    ]
+};
+
+const teamSection = {
+    title: "Une Équipe d'Experts à Votre Service",
+    paragraphs: [
+        `Chez ${companyName}, nous sommes fiers de notre équipe d'électriciens hautement qualifiés et certifiés. Chaque technicien possède une solide expérience et suit régulièrement des formations pour rester à la pointe des dernières technologies et réglementations en matière d'électricité.`,
+        "Leur savoir-faire, combiné à un outillage professionnel, nous permet de garantir des prestations de haute qualité, que ce soit pour une simple réparation ou un projet d'envergure."
+    ],
+    imageUrl: "/homepage/about-electricien-2.png",
+    imageAlt: "Techniciens qualifiés d'Électricien Belge"
+};
+
+const ctaData = {
+    title: `Contactez ${companyName} dès Aujourd'hui`,
+    text: "Pour toute question, demande de devis ou intervention, notre équipe est à votre disposition.",
+    ctaPrimaryText: "Demander un Devis Gratuit",
+    ctaPrimaryLink: "/contact/",
+    ctaSecondaryText: `Appelez-nous : ${phoneNumberDisplay}`,
+    ctaSecondaryLink: `tel:${phoneNumberHref}`
+};
+---
+<Layout title={pageTitle} description={pageDescription}>
+    <section class="bg-white text-gray-800">
+        <div class="container mx-auto px-6 py-16 md:py-24 text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+                {heroData.title}
+            </h1>
+            <p class="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
+                {heroData.subtitle}
+            </p>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-20 bg-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap items-center -mx-4">
+                <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{aboutSection1.title}</h2>
+                    {aboutSection1.paragraphs.map(p => <p class="text-gray-700 mb-4 leading-relaxed">{p}</p>)}
+                </div>
+                <div class="w-full md:w-1/2 px-4">
+                    <img src={aboutSection1.imageUrl} alt={aboutSection1.imageAlt} class="rounded-2xl shadow-xl w-full h-auto object-cover" loading="lazy"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">{valuesData.title}</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                {valuesData.values.map(value => (
+                    <div class="bg-gray-50 p-6 rounded-2xl shadow-lg">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-2">{value.name}</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">{value.description}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-20 bg-white overflow-hidden border-t border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap items-center -mx-4 md:flex-row-reverse"> {/* Image on the right */}
+                <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{teamSection.title}</h2>
+                    {teamSection.paragraphs.map(p => <p class="text-gray-700 mb-4 leading-relaxed">{p}</p>)}
+                </div>
+                <div class="w-full md:w-1/2 px-4">
+                    <img src={teamSection.imageUrl} alt={teamSection.imageAlt} class="rounded-2xl shadow-xl w-full h-auto object-cover" loading="lazy"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 text-center">
+            <div class="bg-gray-50 p-8 md:p-12 rounded-3xl shadow-xl max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{ctaData.title}</h2>
+                <p class="text-lg text-gray-700 mb-10">{ctaData.text}</p>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href={ctaData.ctaSecondaryLink} 
+                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white text-lg">
+                        {ctaData.ctaSecondaryText}
+                    </a>
+                    <a href={ctaData.ctaPrimaryLink} 
+                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-blue-600 text-white hover:bg-blue-700 text-lg">
+                        {ctaData.ctaPrimaryText}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

@@ -1,0 +1,19 @@
+---
+const companyName = "Électricien Belge";
+const phoneNumberDisplay = "0476/23.23.23"; // IMPORTANT: Update this
+const phoneNumberHref = "+32476232323";
+---
+<header class="bg-white shadow-lg sticky top-0 z-50">
+    <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+        <div>
+            <a href="/" class="text-2xl font-bold text-gray-800 hover:text-blue-600">{companyName}</a>
+        </div>
+        <div class="flex items-center">
+            <a href="/#services" class="text-gray-800 hover:text-blue-600 px-3 py-2">Services</a>
+            <a href="/#contact/" class="text-gray-800 hover:text-blue-600 px-3 py-2">Contact</a>
+            <a href={`tel:${phoneNumberHref}`} class="ml-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">
+                {phoneNumberDisplay}
+            </a>
+        </div>
+    </nav>
+</header>

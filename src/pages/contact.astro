@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Page specific data - IMPORTANT: UPDATE THESE PLACEHOLDERS
+const pageTitle = "Contactez-Nous";
+const pageDescription = `Contactez Électricien Belge pour un devis gratuit, une urgence ou toute question. Nous intervenons rapidement partout en Belgique.`;
+
+const phoneNumberDisplay = "04XX/XX.XX.XX";         // UPDATE THIS
+const phoneNumberHref = "04XXXXXXXXX";            // UPDATE THIS
+const emailAddress = "contact@electricienbelge.be"; // UPDATE THIS
+const companyName = "Électricien Belge";
+const physicalAddress = "Rue de l'Exemple 123, 1000 Bruxelles, Belgique"; // UPDATE THIS
+const openingHours = {
+    urgent: "Intervention Urgente : 24h/24, 7j/7",
+    office: "Bureau (sur RDV) : Lundi - Vendredi, 9h00 - 17h00"
+};
+
+// Google Maps Embed - IMPORTANT: Replace this src with your own from Google Maps
+// To get your embed code: Go to Google Maps -> Search your address -> Share -> Embed a map -> Copy HTML -> Extract the src URL
+const mapEmbedSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2518.974619195345!2d4.3500900156039045!3d50.8465572795321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c480d7777777%3A0x1b53b007363c223d!2sGrand%20Place%2C%201000%20Bruxelles%2C%20Belgium!5e0!3m2!1sen!2suk!4v1622000000000!5m2!1sen!2suk"; // REPLACE THIS
+
+const heroData = {
+    title: `Contactez ${companyName}`,
+    subtitle: "Une question, un devis, une urgence ? Nous sommes là pour vous aider."
+};
+
+// FormSubmit.co - IMPORTANT: Replace YOUR_FORMSUBMIT_EMAIL_OR_KEY with your email or key
+const formSubmitEmailOrKey = "YOUR_FORMSUBMIT_EMAIL_OR_KEY";
+---
+<Layout title={pageTitle} description={pageDescription}>
+    <section class="bg-white text-gray-800">
+        <div class="container mx-auto px-6 py-16 md:py-24 text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+                {heroData.title}
+            </h1>
+            <p class="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
+                {heroData.subtitle}
+            </p>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-20  bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full lg:w-1/3 px-4 mb-12 lg:mb-0">
+                    <div class="bg-gray-50 p-6 md:p-8 rounded-2xl shadow-lg h-full">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Nos Coordonnées</h2>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-lg font-semibold text-blue-700 mb-1">Adresse :</h3>
+                            <p class="text-gray-700">{physicalAddress}</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-lg font-semibold text-blue-700 mb-1">Téléphone :</h3>
+                            <a href={`tel:${phoneNumberHref}`} class="text-gray-700 hover:text-blue-600 transition duration-300">{phoneNumberDisplay}</a>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-lg font-semibold text-blue-700 mb-1">Email :</h3>
+                            <a href={`mailto:${emailAddress}`} class="text-gray-700 hover:text-blue-600 transition duration-300">{emailAddress}</a>
+                        </div>
+
+                        <div>
+                            <h3 class="text-lg font-semibold text-blue-700 mb-1">Horaires :</h3>
+                            <p class="text-gray-700">{openingHours.urgent}</p>
+                            <p class="text-gray-700">{openingHours.office}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-2/3 px-4">
+                    <div class="bg-gray-50 p-6 md:p-8 rounded-2xl shadow-lg h-full">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Envoyez-nous un message</h2>
+                        <form action={`https://formsubmit.co/${formSubmitEmailOrKey}`} method="POST" class="space-y-6">
+                            {/* FormSubmit.co specific hidden inputs */}
+                            <input type="hidden" name="_subject" value={`Nouveau message depuis le site Électricien Belge - ${companyName}`} />
+                            {/* Optional: redirect to a thank you page after submission. Create this page e.g. /merci/ */}
+                            {/* <input type="hidden" name="_next" value="https://yourdomain.com/merci/" /> */}
+                            <input type="hidden" name="_captcha" value="false" /> {/* Optional: disable FormSubmit's reCAPTCHA. Not recommended for production without alternatives. */}
+                            <input type="text" name="_honey" style="display:none" /> {/* Honeypot for spam */}
+
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nom complet</label>
+                                <input type="text" name="name" id="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Votre nom et prénom"/>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Adresse email</label>
+                                <input type="email" name="email" id="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="votre.email@example.com"/>
+                            </div>
+
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Téléphone (Optionnel)</label>
+                                <input type="tel" name="phone" id="phone" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder={phoneNumberDisplay}/>
+                            </div>
+
+                            <div>
+                                <label for="formSubject" class="block text-sm font-medium text-gray-700 mb-1">Sujet</label> {/* Changed id to formSubject to avoid conflict with _subject if any */}
+                                <input type="text" name="subject" id="formSubject" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Sujet de votre message"/>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Votre message</label>
+                                <textarea id="message" name="message" rows="5" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Décrivez votre demande..."></textarea>
+                            </div>
+                            
+                            <div>
+                                <button type="submit" class="w-full px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-blue-600 text-white hover:bg-blue-700 text-lg">
+                                    Envoyer le Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-20 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Retrouvez-Nous</h2>
+            </div>
+            <div class="aspect-w-16 aspect-h-9 rounded-2xl shadow-xl overflow-hidden">
+                 {/* IMPORTANT: Replace the src below with your actual Google Maps embed code */}
+                <iframe 
+                    src={mapEmbedSrc}
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+</Layout>
