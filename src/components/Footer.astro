@@ -2,7 +2,7 @@
 // src/components/Footer.astro
 const currentYear = new Date().getFullYear();
 const companyName = "Électricien Belge";
-const logoSrc = "/logo.svg";
+const logoSrc = "/logo-electrician-belge.png";
 const logoAlt = `Logo ${companyName}`;
 
 const phoneNumberDisplay = "0476/23.23.23";
@@ -26,7 +26,7 @@ const legalLinks = [
             {/* Column 1: Logo and About */}
             <div class="md:col-span-2 lg:col-span-1">
                 <a href="/" class="inline-block mb-4">
-                    <img src={logoSrc} alt={logoAlt} class="h-10 w-auto filter brightness-0 invert" /> {/* Inverted for dark bg */}
+                    <img src={logoSrc} alt={logoAlt} class="h-12 w-auto bg-white " /> {/* Inverted for dark bg */}
                 </a>
                 <p class="text-sm text-gray-400 leading-relaxed">
                     Votre partenaire de confiance pour tous travaux d'électricité en Belgique. Dépannage urgent, installations, et mises aux normes RGIE.
