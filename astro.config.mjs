@@ -7,9 +7,16 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://electricien-belge.be",
   vite: {
     plugins: [tailwindcss()]
   },
 
-  integrations: [sitemap()]
+  integrations: [sitemap(
+    {
+      changefreq: "weekly",
+        priority: 0.9,
+        lastmod: new Date(),
+    }
+  )]
 });
