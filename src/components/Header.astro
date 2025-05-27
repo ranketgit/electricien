@@ -1,19 +1,148 @@
 ---
-const companyName = "Électricien Belge";
-const phoneNumberDisplay = "0476/23.23.23"; // IMPORTANT: Update this
+import { data as locationsData } from '../data/locations.ts'; // Adjust path if necessary
+
+const phoneNumberDisplay = "0476/23.23.23";
 const phoneNumberHref = "+32476232323";
+const companyName = "Électricien Belge";
+
+const mainNavLinks = [
+  { text: 'Accueil', href: '/' },
+  { text: 'À Propos', href: '/a-propos/'},
+  { text: 'Contact', href: '/contact/' },
+];
 ---
-<header class="bg-white shadow-lg sticky top-0 z-50">
-    <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-        <div>
-            <a href="/" class="text-2xl font-bold text-gray-800 hover:text-blue-600">{companyName}</a>
+<header class="bg-white shadow-md sticky top-0 z-50 print:hidden">
+  <div class="container mx-auto px-4">
+    {/* Mobile Header: Logo Left, Centered Phone, Hamburger Right */}
+    <div class="lg:hidden flex items-center justify-between h-16">
+      <a href="/" class="flex-shrink-0 z-10" aria-label="Page d'accueil">
+        <img src="/logo.svg" alt={`Logo ${companyName}`} class="h-8 w-auto" />
+      </a>
+      <div class="flex-grow flex justify-center items-center z-0">
+        <a href={`tel:${phoneNumberHref}`} class="text-sm bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 whitespace-nowrap">
+          {phoneNumberDisplay}
+        </a>
+      </div>
+      <button id="hamburger-button" type="button" class="p-2 -mr-2 z-10" aria-label="Ouvrir le menu" aria-expanded="false">
+        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+    </div>
+
+    {/* Desktop Header */}
+    <div class="hidden lg:flex items-center justify-between h-20">
+      <a href="/" class="flex-shrink-0" aria-label="Page d'accueil">
+        <img src="/logo.svg" alt={`Logo ${companyName}`} class="h-10 w-auto" />
+      </a>
+      <nav class="flex items-center space-x-6">
+        {mainNavLinks.map(link => (
+          <a href={link.href} class="text-gray-700 hover:text-blue-600 transition duration-300 font-medium">{link.text}</a>
+        ))}
+        {/* Desktop Province Dropdown */}
+        <div class="relative">
+          <button type="button" id="desktop-province-button" class="text-gray-700 hover:text-blue-600 transition duration-300 font-medium flex items-center" aria-expanded="false" aria-haspopup="true">
+            Provinces
+            <svg class="w-4 h-4 ml-1 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="desktop-province-dropdown" class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-xl origin-top-right z-20 hidden"> {/* Initially hidden, no group-hover */}
+            <div class="py-1 max-h-72 overflow-y-auto" role="menu" aria-orientation="vertical" aria-labelledby="desktop-province-button">
+              {locationsData.map(province => (
+                <a href={`/electricien-${province.slug}/`} class="desktop-province-link block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700" role="menuitem">{province.State}</a>
+              ))}
+            </div>
+          </div>
         </div>
-        <div class="flex items-center">
-            <a href="/#services" class="text-gray-800 hover:text-blue-600 px-3 py-2">Services</a>
-            <a href="/#contact/" class="text-gray-800 hover:text-blue-600 px-3 py-2">Contact</a>
-            <a href={`tel:${phoneNumberHref}`} class="ml-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">
-                {phoneNumberDisplay}
-            </a>
+      </nav>
+      <a href={`tel:${phoneNumberHref}`} class="bg-blue-600 text-white py-2.5 px-6 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 font-semibold whitespace-nowrap">
+        {phoneNumberDisplay}
+      </a>
+    </div>
+  </div>
+
+  {/* Mobile Slide-Out Menu */}
+  <div id="mobile-menu" class="lg:hidden fixed inset-0 h-full w-full bg-white transform translate-x-full transition-transform duration-300 ease-in-out z-40 overflow-y-auto">
+    <div class="flex justify-between items-center p-4 border-b border-gray-200 h-16">
+      <a href="/" class="flex-shrink-0" aria-label="Page d'accueil">
+        <img src="/logo.svg" alt={`Logo ${companyName}`} class="h-8 w-auto" />
+      </a>
+      <button id="close-menu-button" type="button" class="p-2 -mr-2" aria-label="Fermer le menu">
+        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <nav class="flex flex-col p-4 space-y-1">
+      {mainNavLinks.map(link => (
+        <a href={link.href} class="mobile-nav-link block py-3 px-3 text-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md font-medium">{link.text}</a>
+      ))}
+      
+      <div class="pt-2">
+        <h3 class="px-3 py-2 text-sm font-semibold text-gray-500 uppercase tracking-wider">Nos Provinces</h3>
+        <div class="mt-1 space-y-1 max-h-64 overflow-y-auto">
+          {locationsData.map(province => (
+            <a href={`/electricien-${province.slug}/`} class="mobile-nav-link block py-3 px-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md">{province.State}</a>
+          ))}
         </div>
+      </div>
+      <div class="pt-8 px-3">
+        <a href={`tel:${phoneNumberHref}`} class="block w-full text-center bg-blue-600 text-white py-3 px-6 rounded-lg text-lg hover:bg-blue-700 transition duration-300 font-semibold">
+          {phoneNumberDisplay}
+        </a>
+      </div>
     </nav>
+  </div>
 </header>
+
+<script>
+  const hamburgerButton = document.getElementById('hamburger-button');
+  const closeMenuButton = document.getElementById('close-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileNavLinks = mobileMenu.querySelectorAll('a.mobile-nav-link');
+
+  if (hamburgerButton && mobileMenu && closeMenuButton) {
+    hamburgerButton.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-full');
+      hamburgerButton.setAttribute('aria-expanded', 'true');
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.add('translate-x-full');
+      hamburgerButton.setAttribute('aria-expanded', 'false');
+    }
+
+    closeMenuButton.addEventListener('click', closeMobileMenu);
+    
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', closeMobileMenu); // Close menu when a link inside it is clicked
+    });
+  }
+
+  // Desktop Province Dropdown Logic
+  const desktopProvinceButton = document.getElementById('desktop-province-button');
+  const desktopProvinceDropdown = document.getElementById('desktop-province-dropdown');
+
+  if (desktopProvinceButton && desktopProvinceDropdown) {
+    desktopProvinceButton.addEventListener('click', (event) => {
+      event.stopPropagation(); // Prevent this click from immediately closing the dropdown due to the document listener
+      const isHidden = desktopProvinceDropdown.classList.contains('hidden');
+      desktopProvinceDropdown.classList.toggle('hidden', !isHidden); // Toggle based on current state
+      desktopProvinceButton.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+    });
+
+    // Close dropdown if a link inside is clicked
+    const desktopDropdownLinks = desktopProvinceDropdown.querySelectorAll('a.desktop-province-link');
+    desktopDropdownLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        desktopProvinceDropdown.classList.add('hidden');
+        desktopProvinceButton.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close dropdown if clicking outside of it
+    document.addEventListener('click', (event) => {
+      if (!desktopProvinceDropdown.classList.contains('hidden')) { // Only if dropdown is visible
+        if (!desktopProvinceButton.contains(event.target) && !desktopProvinceDropdown.contains(event.target)) {
+          desktopProvinceDropdown.classList.add('hidden');
+          desktopProvinceButton.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
+  }
+</script>
