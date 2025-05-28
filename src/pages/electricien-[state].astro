@@ -1,6 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro'; // Adjust path if Layout.astro is elsewhere
-import { data as locationsData } from '../data/locations.ts'; // Adjust path if locations.ts is elsewhere
+import Layout from '../layouts/Layout.astro'; // Using your import path
+import { data as locationsData } from '../data/locations.ts'; // Using your import path
 
 export async function getStaticPaths() {
   return locationsData.map(province => ({
@@ -12,25 +12,25 @@ export async function getStaticPaths() {
 const { currentProvince } = Astro.props;
 
 const companyName = "Électricien Belge";
-const phoneNumberDisplay = "0476/23.23.23"; // IMPORTANT: Update this
-const phoneNumberHref = "+32476232323";     // IMPORTANT: Update this
+const phoneNumberDisplay = "0476/23.23.23"; 
+const phoneNumberHref = "+32476232323";   
 
-const pageTitle = `Électricien Province de ${currentProvince.State} - Services électriques Complets | ${companyName}`;
-const metaDescription = `Trouvez votre électricien de confiance dans la Province de ${currentProvince.State}. ${companyName}. intervient pour dépannage, installation et mise aux normes. Devis rapide.`;
+// Corrected dynamic strings
+const pageTitle = `Électricien ${currentProvince.State} - Services électriques Complets | ${companyName}`;
+const metaDescription = `Trouvez votre électricien de confiance dans ${currentProvince.State}. ${companyName}. intervient pour dépannage, installation et mise aux normes. Devis rapide.`;
 
-// Hero content for this province page
-const h1Content = `Électricien en Province de ${currentProvince.State} : Votre Réseau d'Experts Locaux`;
-const introParagraph1 = `Vous habitez en Province de ${currentProvince.State} et recherchez un service d'électricité fiable et réactif ? ${companyName} est votre référence pour tous les travaux et dépannages électriques dans l'ensemble de la Province de ${currentProvince.State}.`;
-const introParagraph2 = `Que vous soyez un particulier ou un professionnel, notre réseau d'électriciens qualifiés est à votre disposition. Nous couvrons l'ensemble des communes de la Province de ${currentProvince.State}, garantissant une expertise locale et une intervention rapide conforme aux normes RGIE belges.`;
-const provinceHeroImageUrl = `/homepage/hero-province.png`; // Placeholder - UPDATE THIS path or use a dynamic one
+const h1Content = `Électricien en ${currentProvince.State} : Votre Réseau d'Experts Locaux`;
+const introParagraph1 = `Vous habitez en ${currentProvince.State} et recherchez un service d'électricité fiable et réactif ? ${companyName} est votre référence pour tous les travaux et dépannages électriques dans l'ensemble de ${currentProvince.State}.`;
+const introParagraph2 = `Que vous soyez un particulier ou un professionnel, notre réseau d'électriciens qualifiés est à votre disposition. Nous couvrons l'ensemble des communes de ${currentProvince.State}, garantissant une expertise locale et une intervention rapide conforme aux normes RGIE belges.`;
+const provinceHeroImageUrl = `/homepage/hero-province.png`; 
 
 const prestations = {
-    title: `Nos Prestations Électriques dans Toute la Province de ${currentProvince.State}`,
-    intro: `${companyName} offre une gamme complète de services pour répondre aux besoins spécifiques des habitants et entreprises de la Province de ${currentProvince.State} :`,
+    title: `Nos Prestations Électriques dans tout ${currentProvince.State}`, // Adjusted "Toute la"
+    intro: `${companyName} offre une gamme complète de services pour répondre aux besoins spécifiques des habitants et entreprises de ${currentProvince.State} :`,
     services: [
-        { name: "Dépannage Électrique d'Urgence 24h/7j", text: `Une urgence électrique où que vous soyez en Province de ${currentProvince.State} ? Nos équipes mobiles interviennent rapidement dans toutes les communes pour résoudre vos pannes électriques : court-circuits, disjoncteurs qui sautent, pannes de courant ou tout autre dysfonctionnement. Service disponible 24h/24 et 7j/7, avec intervention garantie en moins de 2 heures.` },
-        { name: "Installations Électriques Complètes", text: `Pour vos projets de construction neuve ou de rénovation majeure en Province de ${currentProvince.State}, nous prenons en charge l'intégralité de votre installation électrique, du tableau aux finitions. Nos électriciens conçoivent des installations sur mesure conformes aux normes RGIE, avec étude personnalisée et matériel de qualité garantie.` },
-        { name: "Mise en Conformité et Contrôle RGIE", text: `Assurez la sécurité de votre installation en Province de ${currentProvince.State}. Nous réalisons les diagnostics complets et les travaux de mise aux normes électriques requis par la législation belge. Notre service inclut l'accompagnement lors du contrôle par un organisme agréé et la délivrance du certificat de conformité RGIE.` },
+        { name: "Dépannage Électrique d'Urgence 24h/7j", text: `Une urgence électrique où que vous soyez en ${currentProvince.State} ? Nos équipes mobiles interviennent rapidement dans toutes les communes pour résoudre vos pannes électriques : court-circuits, disjoncteurs qui sautent, pannes de courant ou tout autre dysfonctionnement. Service disponible 24h/24 et 7j/7, avec intervention garantie en moins de 2 heures.` },
+        { name: "Installations Électriques Complètes", text: `Pour vos projets de construction neuve ou de rénovation majeure en ${currentProvince.State}, nous prenons en charge l'intégralité de votre installation électrique, du tableau aux finitions. Nos électriciens conçoivent des installations sur mesure conformes aux normes RGIE, avec étude personnalisée et matériel de qualité garantie.` },
+        { name: "Mise en Conformité et Contrôle RGIE", text: `Assurez la sécurité de votre installation en ${currentProvince.State}. Nous réalisons les diagnostics complets et les travaux de mise aux normes électriques requis par la législation belge. Notre service inclut l'accompagnement lors du contrôle par un organisme agréé et la délivrance du certificat de conformité RGIE.` },
         { name: "Solutions d'Éclairage LED et Domotique", text: `Optimisez votre confort et votre consommation d'énergie grâce à nos conseils et installations d'éclairage LED performant. Nous proposons également des systèmes domotiques intégrés pour moderniser votre habitat : contrôle intelligent du chauffage, éclairage, volets, sécurité et autres équipements connectés.` }
     ],
     specialisesTitle: "Services Spécialisés Supplémentaires",
@@ -44,12 +44,12 @@ const prestations = {
 };
 
 const avantages = {
-    title: `Les Avantages d'${companyName} en Province de ${currentProvince.State}`,
-    intro: `Choisir ${companyName} pour vos besoins électriques en Province de ${currentProvince.State}, c'est bénéficier de :`,
+    title: `Les Avantages d'${companyName} en ${currentProvince.State}`,
+    intro: `Choisir ${companyName} pour vos besoins électriques en ${currentProvince.State}, c'est bénéficier de :`,
     points: [
-        { name: "Couverture Provinciale Complète", text: `Nous intervenons dans toutes les villes et communes de la Province de ${currentProvince.State}, avec des équipes locales disponibles rapidement.` },
+        { name: "Couverture Provinciale Complète", text: `Nous intervenons dans toutes les villes et communes de ${currentProvince.State}, avec des équipes locales disponibles rapidement.` },
         { name: "Expertise Certifiée", text: `Tous nos électriciens sont qualifiés, certifiés et connaissent parfaitement les spécificités régionales et les normes RGIE belges.` },
-        { name: "Réactivité Garantie", text: `Grâce à notre réseau étendu, nous assurons des délais d'intervention optimisés, même en cas d'urgence, partout dans la province.` },
+        { name: "Réactivité Garantie", text: `Grâce à notre réseau étendu, nous assurons des délais d'intervention optimisés, même en cas d'urgence, partout dans ${currentProvince.State}.` }, // "la province" -> currentProvince.State
         { name: "Transparence Tarifaire", text: `Devis clairs et détaillés avant toute intervention, sans frais cachés. Tarifs cohérents avec ajustement transparent selon la distance.` },
         { name: "Qualité et Garantie", text: `Matériel de qualité supérieure, main d'œuvre experte et garantie sur tous nos travaux électriques.` },
         { name: "Service Client Personnalisé", text: `Conseil technique gratuit, suivi de chantier et assistance après-vente pour tous vos projets.` }
@@ -57,34 +57,34 @@ const avantages = {
 };
 
 const villesCommunes = {
-    title: `Villes et Communes Desservies en Province de ${currentProvince.State}`,
-    intro: `Notre réseau d'électriciens couvre activement l'ensemble de la Province de ${currentProvince.State}, incluant notamment les villes et communes principales. Chaque localité bénéficie du même niveau de service professionnel et de la même réactivité.`,
-    outro: `Contactez-nous pour confirmer notre intervention dans votre localité spécifique en Province de ${currentProvince.State}.`
+    title: `Villes et Communes Desservies en ${currentProvince.State}`,
+    intro: `Notre réseau d'électriciens couvre activement l'ensemble de ${currentProvince.State}, incluant notamment les villes et communes principales. Chaque localité bénéficie du même niveau de service professionnel et de la même réactivité.`,
+    outro: `Contactez-nous pour confirmer notre intervention dans votre localité spécifique en ${currentProvince.State}.`
 };
 
 const temoignages = {
-    title: "Témoignages de Clients Satisfaits",
+    title: "Témoignages de Clients Satisfaits", // Kept generic, context within item adds province
     items: [
-        { quote: "Panne électrique un dimanche soir, l'équipe d'Électricien Belge est intervenue en moins d'une heure. Diagnostic précis, réparation efficace et tarif honnête. Je recommande vivement leurs services.", author: "Jean Dubois", context: `Service de dépannage exceptionnel en Province de ${currentProvince.State}`},
-        { quote: "Électricien Belge a réalisé l'installation électrique complète de nos nouveaux bureaux. Travail impeccable, respect des délais et conformité RGIE parfaite. Très satisfaits du professionnalisme.", author: "SPRL TechnoServices", context: "Installation complète pour notre entreprise"},
-        { quote: "Installation vétuste qui nécessitait une mise aux normes. L'équipe a été de très bon conseil, travail soigné et certification obtenue sans problème. Merci pour ce service de qualité.", author: "Marie Lemoine", context: "Mise en conformité rapide et efficace"}
+        { quote: "Panne électrique un dimanche soir, l'équipe d'Électricien Belge est intervenue en moins d'une heure. Diagnostic précis, réparation efficace et tarif honnête. Je recommande vivement leurs services.", author: "Jean Dubois", context: `Service de dépannage exceptionnel en ${currentProvince.State}`},
+        { quote: "Électricien Belge a réalisé l'installation électrique complète de nos nouveaux bureaux. Travail impeccable, respect des délais et conformité RGIE parfaite. Très satisfaits du professionnalisme.", author: "SPRL TechnoServices", context: "Installation complète pour notre entreprise"}, // This context is generic, ok
+        { quote: "Installation vétuste qui nécessitait une mise aux normes. L'équipe a été de très bon conseil, travail soigné et certification obtenue sans problème. Merci pour ce service de qualité.", author: "Marie Lemoine", context: "Mise en conformité rapide et efficace"} // This context is generic, ok
     ]
 };
 
 const faq = {
-    title: `Questions Fréquentes - Électricité en Province de ${currentProvince.State}`,
+    title: `Questions Fréquentes - Électricité en ${currentProvince.State}`,
     items: [
-        { q: `Quels sont les délais d'intervention en Province de ${currentProvince.State} ?`, a: `Pour les urgences, nous intervenons dans les 2 heures partout en Province de ${currentProvince.State}. Pour les travaux programmés, les délais varient selon la complexité du projet, mais nous nous engageons sur des plannings précis.` },
-        { q: `Les tarifs sont-ils identiques dans toute la province ?`, a: `Nos tarifs de base sont uniformes dans toute la Province de ${currentProvince.State}. Seuls de légers frais de déplacement peuvent s'appliquer selon la distance. Chaque devis détaille clairement tous les coûts.` },
-        { q: `Intervenez-vous pour les entreprises et professionnels ?`, a: `Absolument. Nous proposons nos services aux particuliers, entreprises, commerces, PME et administrations dans toute la Province de ${currentProvince.State}. Devis spécialisés et solutions adaptées à chaque secteur d'activité.` },
+        { q: `Quels sont les délais d'intervention en ${currentProvince.State} ?`, a: `Pour les urgences, nous intervenons dans les 2 heures partout en ${currentProvince.State}. Pour les travaux programmés, les délais varient selon la complexité du projet, mais nous nous engageons sur des plannings précis.` },
+        { q: `Les tarifs sont-ils identiques dans tout ${currentProvince.State} ?`, a: `Nos tarifs de base sont uniformes dans tout ${currentProvince.State}. Seuls de légers frais de déplacement peuvent s'appliquer selon la distance. Chaque devis détaille clairement tous les coûts.` }, // Adjusted "toute la"
+        { q: `Intervenez-vous pour les entreprises et professionnels ?`, a: `Absolument. Nous proposons nos services aux particuliers, entreprises, commerces, PME et administrations dans tout ${currentProvince.State}. Devis spécialisés et solutions adaptées à chaque secteur d'activité.` }, // Adjusted "toute la"
         { q: `Proposez-vous des contrats de maintenance ?`, a: `Oui, nous offrons des contrats de maintenance préventive pour les installations électriques importantes, permettant d'éviter les pannes et de garantir la conformité continue de vos équipements.` },
         { q: `Comment obtenir un certificat de conformité RGIE ?`, a: `Nous réalisons le diagnostic, effectuons les travaux de mise en conformité nécessaires et vous accompagnons lors du contrôle par l'organisme agréé. Processus complet pris en charge par nos équipes.` }
     ]
 };
 
-const finalCta = {
-    title: `Contactez ${companyName} pour la Province de ${currentProvince.State}`,
-    text: `Pour tous vos besoins en électricité dans la Province de ${currentProvince.State}, faites appel à l'expertise locale d'${companyName}. Intervention rapide, travail soigné et tarifs transparents garantis.`,
+const finalCta = { 
+    title: `Contactez ${companyName} pour ${currentProvince.State}`,
+    text: `Pour tous vos besoins en électricité dans ${currentProvince.State}, faites appel à l'expertise locale d'${companyName}. Intervention rapide, travail soigné et tarifs transparents garantis.`,
     button1Text: "Obtenir un Devis Gratuit",
     button1Link: "/contact/",
     button2Text: `Urgence 24h/7j : ${phoneNumberDisplay}`,
@@ -92,29 +92,32 @@ const finalCta = {
 };
 ---
 <Layout title={pageTitle} description={metaDescription} schema=''>
-    <section class="bg-white text-gray-800 pt-16 md:pt-24">
-        <div class="container mx-auto px-6 text-center pb-8 md:pb-12"> {/* Adjusted padding */}
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-6">
+    {/* HERO SECTION - Background image and button style/placement as per last correction */}
+    <section 
+        class="relative bg-cover bg-center text-white"
+        style={`background-image: url('${provinceHeroImageUrl}');`}
+    >
+        <div class="absolute inset-0 bg-blue-900 opacity-60"></div>
+        <div class="container mx-auto px-6 text-center py-20 md:py-32 relative z-10">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6">
                 {h1Content}
             </h1>
-            <p class="text-lg md:text-xl text-gray-700 mb-4 max-w-3xl mx-auto">
+            <p class="text-lg md:text-xl text-gray-100 mb-8 max-w-3xl mx-auto">
                 {introParagraph1}
             </p>
-            <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+            <div class="flex justify-center items-center mb-8">
+                <a href={`tel:${phoneNumberHref}`} 
+                   class="w-full sm:w-auto px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-black hover:bg-yellow-600 text-lg">
+                    {phoneNumberDisplay}
+                </a>
+            </div>
+            <p class="text-lg md:text-xl text-gray-100 max-w-3xl mx-auto">
                 {introParagraph2}
             </p>
         </div>
-        {/* Image Added Here - Similar to Homepage */}
-        <div class="container mx-auto px-4 sm:px-6 pb-16 md:pb-20"> {/* Adjusted bottom padding for section spacing */}
-             <img 
-                src={provinceHeroImageUrl} 
-                alt={`Électricien professionnel en Province de ${currentProvince.State}`} 
-                class="w-full h-auto rounded-2xl shadow-2xl mx-auto max-w-3xl md:max-w-4xl lg:max-w-5xl" 
-                loading="lazy"
-             />
-        </div>
     </section>
 
+    {/* Prestations Section - No structural or styling changes from last version */}
     <section class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{prestations.title}</h2>
@@ -122,7 +125,7 @@ const finalCta = {
             <div class="grid md:grid-cols-2 gap-x-8 gap-y-10 mb-12">
                 {prestations.services.map(service => (
                     <div class="bg-white p-6 rounded-2xl shadow-xl">
-                        <h3 class="text-xl font-semibold text-blue-700 mb-3">{service.name}</h3>
+                        <h3 class="text-xl font-semibold text-yellow-700 mb-3">{service.name}</h3>
                         <p class="text-gray-600 leading-relaxed">{service.text}</p>
                     </div>
                 ))}
@@ -136,6 +139,7 @@ const finalCta = {
         </div>
     </section>
 
+    {/* Avantages Section - No structural or styling changes from last version */}
     <section class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{avantages.title}</h2>
@@ -143,7 +147,7 @@ const finalCta = {
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {avantages.points.map(point => (
                     <div class="bg-white p-6 rounded-2xl shadow-xl">
-                        <h3 class="text-xl font-semibold text-blue-700 mb-2">{point.name}</h3>
+                        <h3 class="text-xl font-semibold text-yellow-700 mb-2">{point.name}</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">{point.text}</p>
                     </div>
                 ))}
@@ -151,6 +155,7 @@ const finalCta = {
         </div>
     </section>
 
+    {/* Villes et Communes Desservies Section - No structural or styling changes from last version */}
     <section class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{villesCommunes.title}</h2>
@@ -158,7 +163,7 @@ const finalCta = {
             {currentProvince.Cities && currentProvince.Cities.length > 0 ? (
                 <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8">
                     {currentProvince.Cities.slice(0, 20).map(city => (
-                        <a href={`/electricien-${city.slug}/`} class="block bg-white text-gray-700 px-4 py-2 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-100 hover:text-blue-600 transition-all duration-200 text-sm">
+                        <a href={`/electricien-${city.slug}/`} class="block bg-white text-gray-700 px-4 py-2 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-100 hover:text-yellow-500 transition-all duration-200 text-sm">
                             {city.cityName}
                         </a>
                     ))}
@@ -173,6 +178,7 @@ const finalCta = {
         </div>
     </section>
 
+    {/* Témoignages Section - No structural or styling changes from last version */}
     <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{temoignages.title}</h2>
@@ -188,15 +194,16 @@ const finalCta = {
         </div>
     </section>
 
+    {/* Questions Fréquentes Section - No structural or styling changes from last version */}
     <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6 max-w-3xl">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{faq.title}</h2>
             <div class="space-y-6">
                 {faq.items.map((item, index) => (
                     <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group" open={index === 0}>
-                        <summary class="flex justify-between items-center font-semibold text-blue-700 cursor-pointer hover:text-blue-800 list-none">
+                        <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
                             <span>{item.q}</span>
-                            <span class="transform transition-transform duration-300 group-open:rotate-180 text-blue-600">
+                            <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                 </svg>
@@ -209,6 +216,7 @@ const finalCta = {
         </div>
     </section>
 
+    {/* Final CTA Section - Remains as per your provided code (with two buttons) */}
     <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6 text-center">
             <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl max-w-3xl mx-auto">
@@ -216,11 +224,11 @@ const finalCta = {
                 <p class="text-lg text-gray-700 mb-10">{finalCta.text}</p>
                 <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
                      <a href={finalCta.button2Link} 
-                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white text-lg">
+                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-lg">
                         {finalCta.button2Text}
                     </a>
                     <a href={finalCta.button1Link} 
-                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-blue-600 text-white hover:bg-blue-700 text-lg">
+                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-white hover:bg-yellow-700 text-lg">
                         {finalCta.button1Text}
                     </a>
                 </div>

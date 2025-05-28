@@ -87,7 +87,7 @@ const ctaData = {
             <div class="grid md:grid-cols-2 gap-8">
                 {valuesData.values.map(value => (
                     <div class="bg-gray-50 p-6 rounded-2xl shadow-lg">
-                        <h3 class="text-xl font-semibold text-blue-700 mb-2">{value.name}</h3>
+                        <h3 class="text-xl font-semibold text-yellow-700 mb-2">{value.name}</h3>
                         <p class="text-gray-600 text-sm leading-relaxed">{value.description}</p>
                     </div>
                 ))}
@@ -116,11 +116,11 @@ const ctaData = {
                 <p class="text-lg text-gray-700 mb-10">{ctaData.text}</p>
                 <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
                     <a href={ctaData.ctaSecondaryLink} 
-                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white text-lg">
+                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-lg">
                         {ctaData.ctaSecondaryText}
                     </a>
                     <a href={ctaData.ctaPrimaryLink} 
-                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-blue-600 text-white hover:bg-blue-700 text-lg">
+                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-white hover:bg-yellow-700 text-lg">
                         {ctaData.ctaPrimaryText}
                     </a>
                 </div>
