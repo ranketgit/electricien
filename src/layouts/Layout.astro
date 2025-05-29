@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { generateSchema } from '../seo/schema';
 import '../styles/global.css';
 
 interface Props {
@@ -11,8 +12,7 @@ interface Props {
 
 const { title, description, schema } = Astro.props;
 const siteName = "Électricien Belge";
-
-const canonicalUrl=Astro.url.pathname
+const canonicalUrl = Astro.url.pathname
 ---
 <!doctype html>
 <html lang="fr-BE">
@@ -28,7 +28,7 @@ const canonicalUrl=Astro.url.pathname
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="canonical" href=`https://electricien-belge.be${canonicalUrl}`/>
     <title>{title}</title>
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(generateSchema(title, description))} />
 </head>
 <body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen font-sans">
     <Header />
