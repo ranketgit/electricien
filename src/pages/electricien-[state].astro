@@ -10,23 +10,18 @@ export async function getStaticPaths() {
 }
 
 const { currentProvince } = Astro.props;
-
-const companyName = "Électricien Belge";
-const phoneNumberDisplay = "0476/23.23.23"; 
-const phoneNumberHref = "+32476232323";   
-
 // Corrected dynamic strings
-const pageTitle = `Électricien ${currentProvince.State} - Services électriques Complets | ${companyName}`;
-const metaDescription = `Trouvez votre électricien de confiance dans ${currentProvince.State}. ${companyName}. intervient pour dépannage, installation et mise aux normes. Devis rapide.`;
+const pageTitle = `Électricien ${currentProvince.State} - Services électriques Complets | Elec Express`;
+const metaDescription = `Trouvez votre électricien de confiance dans ${currentProvince.State}. Elec Express. intervient pour dépannage, installation et mise aux normes. Devis rapide.`;
 
 const h1Content = `Électricien en ${currentProvince.State} : Votre Réseau d'Experts Locaux`;
-const introParagraph1 = `Vous habitez en ${currentProvince.State} et recherchez un service d'électricité fiable et réactif ? ${companyName} est votre référence pour tous les travaux et dépannages électriques dans l'ensemble de ${currentProvince.State}.`;
+const introParagraph1 = `Vous habitez en ${currentProvince.State} et recherchez un service d'électricité fiable et réactif ? Elec Express est votre référence pour tous les travaux et dépannages électriques dans l'ensemble de ${currentProvince.State}.`;
 const introParagraph2 = `Que vous soyez un particulier ou un professionnel, notre réseau d'électriciens qualifiés est à votre disposition. Nous couvrons l'ensemble des communes de ${currentProvince.State}, garantissant une expertise locale et une intervention rapide conforme aux normes RGIE belges.`;
 const provinceHeroImageUrl = `/homepage/hero-province.png`; 
 
 const prestations = {
     title: `Nos Prestations Électriques dans tout ${currentProvince.State}`, // Adjusted "Toute la"
-    intro: `${companyName} offre une gamme complète de services pour répondre aux besoins spécifiques des habitants et entreprises de ${currentProvince.State} :`,
+    intro: `Elec Express offre une gamme complète de services pour répondre aux besoins spécifiques des habitants et entreprises de ${currentProvince.State} :`,
     services: [
         { name: "Dépannage Électrique d'Urgence 24h/7j", text: `Une urgence électrique où que vous soyez en ${currentProvince.State} ? Nos équipes mobiles interviennent rapidement dans toutes les communes pour résoudre vos pannes électriques : court-circuits, disjoncteurs qui sautent, pannes de courant ou tout autre dysfonctionnement. Service disponible 24h/24 et 7j/7, avec intervention garantie en moins de 2 heures.` },
         { name: "Installations Électriques Complètes", text: `Pour vos projets de construction neuve ou de rénovation majeure en ${currentProvince.State}, nous prenons en charge l'intégralité de votre installation électrique, du tableau aux finitions. Nos électriciens conçoivent des installations sur mesure conformes aux normes RGIE, avec étude personnalisée et matériel de qualité garantie.` },
@@ -44,8 +39,8 @@ const prestations = {
 };
 
 const avantages = {
-    title: `Les Avantages d'${companyName} en ${currentProvince.State}`,
-    intro: `Choisir ${companyName} pour vos besoins électriques en ${currentProvince.State}, c'est bénéficier de :`,
+    title: `Les Avantages d'Elec Express en ${currentProvince.State}`,
+    intro: `Choisir Elec Express pour vos besoins électriques en ${currentProvince.State}, c'est bénéficier de :`,
     points: [
         { name: "Couverture Provinciale Complète", text: `Nous intervenons dans toutes les villes et communes de ${currentProvince.State}, avec des équipes locales disponibles rapidement.` },
         { name: "Expertise Certifiée", text: `Tous nos électriciens sont qualifiés, certifiés et connaissent parfaitement les spécificités régionales et les normes RGIE belges.` },
@@ -65,8 +60,8 @@ const villesCommunes = {
 const temoignages = {
     title: "Témoignages de Clients Satisfaits", // Kept generic, context within item adds province
     items: [
-        { quote: "Panne électrique un dimanche soir, l'équipe d'Électricien Belge est intervenue en moins d'une heure. Diagnostic précis, réparation efficace et tarif honnête. Je recommande vivement leurs services.", author: "Jean Dubois", context: `Service de dépannage exceptionnel en ${currentProvince.State}`},
-        { quote: "Électricien Belge a réalisé l'installation électrique complète de nos nouveaux bureaux. Travail impeccable, respect des délais et conformité RGIE parfaite. Très satisfaits du professionnalisme.", author: "SPRL TechnoServices", context: "Installation complète pour notre entreprise"}, // This context is generic, ok
+        { quote: "Panne électrique un dimanche soir, l'équipe d'Elec Express est intervenue en moins d'une heure. Diagnostic précis, réparation efficace et tarif honnête. Je recommande vivement leurs services.", author: "Jean Dubois", context: `Service de dépannage exceptionnel en ${currentProvince.State}`},
+        { quote: "Elec Express a réalisé l'installation électrique complète de nos nouveaux bureaux. Travail impeccable, respect des délais et conformité RGIE parfaite. Très satisfaits du professionnalisme.", author: "SPRL TechnoServices", context: "Installation complète pour notre entreprise"}, // This context is generic, ok
         { quote: "Installation vétuste qui nécessitait une mise aux normes. L'équipe a été de très bon conseil, travail soigné et certification obtenue sans problème. Merci pour ce service de qualité.", author: "Marie Lemoine", context: "Mise en conformité rapide et efficace"} // This context is generic, ok
     ]
 };
@@ -83,12 +78,12 @@ const faq = {
 };
 
 const finalCta = { 
-    title: `Contactez ${companyName} pour ${currentProvince.State}`,
-    text: `Pour tous vos besoins en électricité dans ${currentProvince.State}, faites appel à l'expertise locale d'${companyName}. Intervention rapide, travail soigné et tarifs transparents garantis.`,
+    title: `Contactez Elec Express pour ${currentProvince.State}`,
+    text: `Pour tous vos besoins en électricité dans ${currentProvince.State}, faites appel à l'expertise locale d'Elec Express. Intervention rapide, travail soigné et tarifs transparents garantis.`,
     button1Text: "Obtenir un Devis Gratuit",
     button1Link: "/contact/",
-    button2Text: `Urgence 24h/7j : ${phoneNumberDisplay}`,
-    button2Link: `tel:${phoneNumberHref}`
+    button2Text: `Urgence 24h/7j : 0470/2.42.42`,
+    button2Link: `tel:${+32470424242}`
 };
 ---
 <Layout title={pageTitle} description={metaDescription} schema=''>
@@ -107,9 +102,9 @@ const finalCta = {
                 {introParagraph1}
             </p>
             <div class="flex justify-center items-center mb-8">
-                <a href={`tel:${phoneNumberHref}`} 
+                <a href="tel:+32470424242" 
                    class="w-full sm:w-auto px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-black hover:bg-yellow-600 text-lg">
-                    {phoneNumberDisplay}
+                    0470/2.42.42
                 </a>
             </div>
             <p class="text-lg md:text-xl text-gray-100 max-w-3xl mx-auto">

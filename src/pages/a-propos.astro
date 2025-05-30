@@ -1,27 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Page specific data - UPDATE THESE
-const pageTitle = "À Propos de Nous";
-const pageDescription = "Découvrez Électricien Belge, votre partenaire de confiance pour tous vos travaux et dépannages électriques en Belgique. Notre engagement : expertise, rapidité et satisfaction client.";
 
-const phoneNumberDisplay = "0476/23.23.23"; // IMPORTANT: Update this
-const phoneNumberHref = "+32476232323";     // IMPORTANT: Update this
-const companyName = "Électricien Belge";
+const pageTitle = "À Propos de Nous";
+const pageDescription = "Découvrez Elec Express, votre partenaire de confiance pour tous vos travaux et dépannages électriques en Belgique. Notre engagement : expertise, rapidité et satisfaction client.";
+
 
 const heroData = {
-    title: `À Propos de ${companyName}`,
+    title: `À Propos de Elec Express`,
     subtitle: "Votre partenaire expert pour une électricité sûre et performante, partout en Belgique."
 };
 
 const aboutSection1 = {
     title: "Notre Mission : Votre Sécurité, Notre Priorité",
     paragraphs: [
-        `${companyName} a été fondé sur une conviction simple : chaque foyer et entreprise en Belgique mérite une installation électrique fiable, sécurisée et conforme aux normes les plus strictes. Depuis nos débuts, nous nous engageons à fournir des services d'électricité exceptionnels, allant du dépannage urgent aux installations complètes et aux mises en conformité rigoureuses.`,
+        `Elec Express a été fondé sur une conviction simple : chaque foyer et entreprise en Belgique mérite une installation électrique fiable, sécurisée et conforme aux normes les plus strictes. Depuis nos débuts, nous nous engageons à fournir des services d'électricité exceptionnels, allant du dépannage urgent aux installations complètes et aux mises en conformité rigoureuses.`,
         "Nous comprenons l'importance cruciale d'une électricité fonctionnelle au quotidien. C'est pourquoi notre équipe d'électriciens qualifiés met tout en œuvre pour intervenir rapidement, diagnostiquer avec précision et apporter des solutions durables à tous vos besoins électriques."
     ],
     imageUrl: "/homepage/about-electricien-1.png",
-    imageAlt: "Électricien Belge - Notre équipe d'experts"
+    imageAlt: "Elec Express - Notre équipe d'experts"
 };
 
 const valuesData = {
@@ -37,20 +34,20 @@ const valuesData = {
 const teamSection = {
     title: "Une Équipe d'Experts à Votre Service",
     paragraphs: [
-        `Chez ${companyName}, nous sommes fiers de notre équipe d'électriciens hautement qualifiés et certifiés. Chaque technicien possède une solide expérience et suit régulièrement des formations pour rester à la pointe des dernières technologies et réglementations en matière d'électricité.`,
+        `Chez Elec Express, nous sommes fiers de notre équipe d'électriciens hautement qualifiés et certifiés. Chaque technicien possède une solide expérience et suit régulièrement des formations pour rester à la pointe des dernières technologies et réglementations en matière d'électricité.`,
         "Leur savoir-faire, combiné à un outillage professionnel, nous permet de garantir des prestations de haute qualité, que ce soit pour une simple réparation ou un projet d'envergure."
     ],
     imageUrl: "/homepage/about-electricien-2.png",
-    imageAlt: "Techniciens qualifiés d'Électricien Belge"
+    imageAlt: "Techniciens qualifiés d'Elec Express"
 };
 
 const ctaData = {
-    title: `Contactez ${companyName} dès Aujourd'hui`,
+    title: `Contactez Elec Express dès Aujourd'hui`,
     text: "Pour toute question, demande de devis ou intervention, notre équipe est à votre disposition.",
     ctaPrimaryText: "Demander un Devis Gratuit",
     ctaPrimaryLink: "/contact/",
-    ctaSecondaryText: `Appelez-nous : ${phoneNumberDisplay}`,
-    ctaSecondaryLink: `tel:${phoneNumberHref}`
+    ctaSecondaryText: `Appelez-nous : 0470/2.42.42`,
+    ctaSecondaryLink: `tel:${+32470424242}`
 };
 ---
 <Layout title={pageTitle} description={pageDescription} schema=''>

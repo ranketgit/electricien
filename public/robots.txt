@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://electricien-belge.be/sitemap-index.xml
+Sitemap: https://elec-express/sitemap-index.xml

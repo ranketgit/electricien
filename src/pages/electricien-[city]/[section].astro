@@ -25,16 +25,12 @@ export async function getStaticPaths() {
 
 const { currentSection, currentCity, currentProvinceName } = Astro.props;
 
-const companyName = "Electricien Belge"; 
-const phoneNumberDisplay = "0476/23.23.23"; 
-const phoneNumberHref = "+32476232323";     
-
-const pageTitle = `Électricien ${currentSection.name} (${currentCity.cityName}) - Dépannage Rapide | ${companyName}`;
-const metaDescription = `Votre électricien de proximité dans le quartier ${currentSection.name} à ${currentCity.cityName}. Intervention rapide pour pannes, installations et mises aux normes. Contactez ${companyName} !`;
+const pageTitle = `Électricien ${currentSection.name} (${currentCity.cityName}) - Dépannage Rapide | Elec Express`;
+const metaDescription = `Votre électricien de proximité dans le quartier ${currentSection.name} à ${currentCity.cityName}. Intervention rapide pour pannes, installations et mises aux normes. Contactez Elec Express !`;
 
 const sectionHeroImageUrl = `/homepage/electrician-state.avif`; // Using your image path - ensure it's suitable for a background
 const h1Content = `Électricien ${currentSection.name}, ${currentCity.cityName} : Votre Expert de Proximité`;
-const heroIntroP1 = `Vous habitez ou travaillez dans le quartier de ${currentSection.name} à ${currentCity.cityName} et avez besoin d'un électricien local fiable ? Une panne électrique soudaine dans votre logement ou commerce à ${currentSection.name} ? ${companyName} est votre spécialiste de l'électricité intervenant spécifiquement dans le quartier de ${currentSection.name}, au cœur de ${currentCity.cityName}.`;
+const heroIntroP1 = `Vous habitez ou travaillez dans le quartier de ${currentSection.name} à ${currentCity.cityName} et avez besoin d'un électricien local fiable ? Une panne électrique soudaine dans votre logement ou commerce à ${currentSection.name} ? Elec Express est votre spécialiste de l'électricité intervenant spécifiquement dans le quartier de ${currentSection.name}, au cœur de ${currentCity.cityName}.`;
 const heroIntroP2 = `Notre équipe connaît parfaitement ${currentSection.name} et ses environs, offrant des dépannages rapides et solutions électriques sur mesure.`;
 
 // --- UNCHANGED FRONTMATTER SECTIONS BELOW THIS LINE (Services, Avantages, etc. as you provided) ---
@@ -69,8 +65,8 @@ const tarifsOutro = `Demandez un devis précis pour votre besoin spécifique dan
 const temoignagesTitle = `Ils Nous Ont Fait Confiance à ${currentSection.name}`;
 const sectionTemoignages = [
     { quote: `Enfin un électricien qui intervient vite dans le quartier ${currentSection.name} ! Problème de disjoncteur résolu en 30 minutes. Top !`, author: `Ahmed K., ${currentSection.name}, ${currentCity.cityName}` },
-    { quote: `Installation de nouvelles prises dans notre bureau à ${currentSection.name}. Travail propre et rapide par ${companyName}. Je recommande pour les pros du quartier.`, author: `Société Innovatech, ${currentSection.name}` },
-    { quote: `Très content du service pour la mise en conformité de mon appartement à ${currentSection.name}. L'électricien de ${companyName} a été clair et pédagogue.`, author: `Chloé M., ${currentSection.name}, ${currentCity.cityName}` }
+    { quote: `Installation de nouvelles prises dans notre bureau à ${currentSection.name}. Travail propre et rapide par Elec Express. Je recommande pour les pros du quartier.`, author: `Société Innovatech, ${currentSection.name}` },
+    { quote: `Très content du service pour la mise en conformité de mon appartement à ${currentSection.name}. L'électricien de Elec Express a été clair et pédagogue.`, author: `Chloé M., ${currentSection.name}, ${currentCity.cityName}` }
 ];
 
 const faqTitle = `FAQ – Électricien Quartier ${currentSection.name}`;
@@ -84,8 +80,8 @@ const finalCtaHeading = "Contactez-nous !";
 const finalCtaText = `Habitants et professionnels du quartier ${currentSection.name}, ne cherchez plus votre électricien !`;
 const finalCtaButton1Text = `Devis Gratuit pour ${currentSection.name}`;
 const finalCtaButton1Link = "/contact/";
-const finalCtaButton2Text = `Appelez votre expert local au ${phoneNumberDisplay}`;
-const finalCtaButton2Link = `tel:${phoneNumberHref}`;
+const finalCtaButton2Text = `Appelez votre expert local au 0470/2.42.42`;
+const finalCtaButton2Link = `tel:${+32470424242}`;
 ---
 
 <Layout title={pageTitle} description={metaDescription} schema=''>
@@ -104,9 +100,9 @@ const finalCtaButton2Link = `tel:${phoneNumberHref}`;
             </p>
             {/* ADDED SINGLE SOLID BUTTON TO HERO - Placed under the first paragraph */}
             <div class="flex justify-center items-center mb-8"> {/* mb-8 for space after button */}
-                <a href={`tel:${phoneNumberHref}`} 
+                <a href="tel:+32470424242" 
                    class="w-full sm:w-auto px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-black hover:bg-yellow-600 text-lg">
-                    {phoneNumberDisplay}
+                    0470/2.42.42
                 </a>
             </div>
             <p class="text-lg md:text-xl text-gray-100 max-w-3xl mx-auto">

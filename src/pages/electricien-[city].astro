@@ -21,20 +21,16 @@ export async function getStaticPaths() {
 
 const { currentCity, currentProvinceName, currentProvinceSlug } = Astro.props;
 
-const companyName = "Électricien Belge";
-const phoneNumberDisplay = "0476/23.23.23"; 
-const phoneNumberHref = "+32476232323";     
-
-const pageTitle = `Électricien à ${currentCity.cityName} – Dépannage & Installation 24h/24 | ${companyName}`;
+const pageTitle = `Électricien à ${currentCity.cityName} – Dépannage & Installation 24h/24 | Elec Express`;
 const metaDescription = `Besoin d'un électricien fiable à ${currentCity.cityName} ? Intervention rapide 7j/7 pour dépannage, installation, mise en conformité. Demandez votre devis gratuit !`;
 
 const heroImageUrl = `/homepage/electrician-hero-city.avif`; // Using your image path, ensure it's suitable for a background
 const h1Content = `Électricien à ${currentCity.cityName} : Votre Expert Local pour Tous Vos Besoins Électriques`;
-const heroIntroP1 = `Vous recherchez un électricien compétent et réactif à ${currentCity.cityName} ? ${companyName} est votre partenaire de confiance pour tous vos travaux électriques. Que vous ayez besoin d'un dépannage électrique immédiat, d'une nouvelle installation ou d'une mise aux normes RGIE de votre système à ${currentCity.cityName}, notre équipe d'artisans électriciens qualifiés dessert toute la commune de ${currentCity.cityName} et ses environs, garantissant des interventions rapides et efficaces pour tous vos travaux d'électricité.`;
+const heroIntroP1 = `Vous recherchez un électricien compétent et réactif à ${currentCity.cityName} ? Elec Express est votre partenaire de confiance pour tous vos travaux électriques. Que vous ayez besoin d'un dépannage électrique immédiat, d'une nouvelle installation ou d'une mise aux normes RGIE de votre système à ${currentCity.cityName}, notre équipe d'artisans électriciens qualifiés dessert toute la commune de ${currentCity.cityName} et ses environs, garantissant des interventions rapides et efficaces pour tous vos travaux d'électricité.`;
 
 // --- UNCHANGED FRONTMATTER SECTIONS BELOW THIS LINE (Services, Pourquoi Choisir, etc. as you provided) ---
 const servicesMainTitle = `Nos Services d'Électricité à ${currentCity.cityName}`;
-const servicesIntro = `Chez ${companyName}, nous proposons une gamme complète de services électriques pour répondre à tous vos besoins à ${currentCity.cityName} :`;
+const servicesIntro = `Chez Elec Express, nous proposons une gamme complète de services électriques pour répondre à tous vos besoins à ${currentCity.cityName} :`;
 const cityServices = [
     { title: "Dépannage Électrique Urgent 24h/7j", text: `Une panne de courant ou un court-circuit à ${currentCity.cityName} ? Nos électriciens interviennent rapidement pour diagnostiquer et réparer toute panne électrique : disjoncteurs qui sautent, prises défaillantes, problèmes de tableau électrique. Intervention garantie en moins de 2 heures pour assurer votre sécurité et minimiser les désagréments.` },
     { title: "Installation Électrique Neuve et Rénovation", text: `Vous construisez ou rénovez à ${currentCity.cityName} ? Nous réalisons l'installation complète de votre système électrique conforme aux normes RGIE belges : tableau électrique moderne, câblage aux normes, prises et éclairage optimisés. Chaque installation est personnalisée selon vos besoins et respecte les standards de sécurité les plus stricts.` },
@@ -52,8 +48,8 @@ const servicesSpecialisesList = [
     "Réseaux informatiques : Câblage et installation de prises RJ45"
 ];
 
-const pourquoiTitle = `Pourquoi Choisir ${companyName} à ${currentCity.cityName} ?`;
-const pourquoiIntro = `Faire appel à ${companyName} pour vos travaux électriques à ${currentCity.cityName} présente de nombreux avantages :`;
+const pourquoiTitle = `Pourquoi Choisir Elec Express à ${currentCity.cityName} ?`;
+const pourquoiIntro = `Faire appel à Elec Express pour vos travaux électriques à ${currentCity.cityName} présente de nombreux avantages :`;
 const pourquoiPoints = [
     { title: "Rapidité d'Intervention Garantie", text: `Notre proximité nous permet d'intervenir plus rapidement en cas d'urgence à ${currentCity.cityName}. Délais d'intervention optimisés avec équipes locales disponibles 24h/24 et 7j/7.` },
     { title: "Expertise Locale et Certifiée", text: `Nous connaissons les spécificités locales de ${currentCity.cityName} et les particularités des installations électriques courantes dans la région. Tous nos électriciens sont certifiés et formés aux dernières normes RGIE.` },
@@ -81,10 +77,10 @@ const tarifsOutro = `Ces prix sont indicatifs et peuvent varier selon la complex
 
 const temoignagesTitle = `Témoignages de nos Clients Satisfaits à ${currentCity.cityName}`;
 const cityTemoignages = [
-    { quote: `Panne électrique totale un dimanche soir à ${currentCity.cityName}. L'électricien d'Électricien Belge est arrivé en 1h30, a trouvé le problème rapidement et tout est rentré dans l'ordre. Service impeccable et tarif honnête !`, author: `Sophie Delcroix, ${currentCity.cityName}`, context: "Intervention remarquable en urgence" },
-    { quote: `Nous avons confié la rénovation électrique complète de notre maison ancienne à ${currentCity.cityName} à Électricien Belge. Travail soigné, respect des délais, conseils précieux et conformité RGIE obtenue du premier coup. Hautement recommandé !`, author: `Marc et Isabelle Laurent, ${currentCity.cityName}`, context: "Rénovation électrique complète parfaite" },
+    { quote: `Panne électrique totale un dimanche soir à ${currentCity.cityName}. L'électricien d'Elec Express est arrivé en 1h30, a trouvé le problème rapidement et tout est rentré dans l'ordre. Service impeccable et tarif honnête !`, author: `Sophie Delcroix, ${currentCity.cityName}`, context: "Intervention remarquable en urgence" },
+    { quote: `Nous avons confié la rénovation électrique complète de notre maison ancienne à ${currentCity.cityName} à Elec Express. Travail soigné, respect des délais, conseils précieux et conformité RGIE obtenue du premier coup. Hautement recommandé !`, author: `Marc et Isabelle Laurent, ${currentCity.cityName}`, context: "Rénovation électrique complète parfaite" },
     { quote: `Installation rapide et professionnelle de notre borne de recharge à ${currentCity.cityName}. Devis clair, travail propre et explications détaillées du fonctionnement. Parfait pour notre Tesla !`, author: `Famille Dubois, ${currentCity.cityName}`, context: "Installation borne de recharge impeccable" },
-    { quote: `Installation électrique des années 80 à mettre aux normes pour la vente. Électricien Belge a géré tout le processus, du diagnostic à la certification. Travail irréprochable et délais respectés.`, author: `Jean-Pierre Moreau, ${currentCity.cityName}`, context: "Mise aux normes efficace" }
+    { quote: `Installation électrique des années 80 à mettre aux normes pour la vente. Elec Express a géré tout le processus, du diagnostic à la certification. Travail irréprochable et délais respectés.`, author: `Jean-Pierre Moreau, ${currentCity.cityName}`, context: "Mise aux normes efficace" }
 ];
 
 const faqTitle = `Questions Fréquentes - Électricien à ${currentCity.cityName}`;
@@ -99,12 +95,12 @@ const cityFaqItems = [
 
 const citySectionsTitle = `Nos zones d’intervention en ${currentCity.cityName}:`;
 
-const finalCtaTitle = `Contactez ${companyName} à ${currentCity.cityName}`;
-const finalCtaText = `N'attendez plus pour résoudre vos problèmes électriques ou concrétiser vos projets à ${currentCity.cityName} ! Pour une intervention rapide, un service de qualité et des conseils d'expert, faites confiance à ${companyName}.`;
+const finalCtaTitle = `Contactez Elec Express à ${currentCity.cityName}`;
+const finalCtaText = `N'attendez plus pour résoudre vos problèmes électriques ou concrétiser vos projets à ${currentCity.cityName} ! Pour une intervention rapide, un service de qualité et des conseils d'expert, faites confiance à Elec Express.`;
 const finalCtaButton1Text = `Demandez votre Devis Gratuit à ${currentCity.cityName}`;
 const finalCtaButton1Link = "/contact/";
-const finalCtaButton2Text = `Urgence 24h/7j : ${phoneNumberDisplay}`;
-const finalCtaButton2Link = `tel:${phoneNumberHref}`;
+const finalCtaButton2Text = `Urgence 24h/7j : 0470/2.42.42`;
+const finalCtaButton2Link = `tel:${+32470424242}`;
 ---
 
 <Layout title={pageTitle} description={metaDescription} schema='' >
@@ -125,9 +121,9 @@ const finalCtaButton2Link = `tel:${phoneNumberHref}`;
             </p>
 
             <div class="flex justify-center items-center mb-8"> 
-                <a href={`tel:${phoneNumberHref}`} 
+                <a href="tel:+32470424242" 
                    class="w-full sm:w-auto px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-black hover:bg-yellow-600 text-lg">
-                    {phoneNumberDisplay}
+                    0470/2.42.42
                 </a>
             </div>
 

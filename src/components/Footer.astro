@@ -1,81 +1,80 @@
 ---
-// src/components/Footer.astro
-const currentYear = new Date().getFullYear();
-const companyName = "Électricien Belge";
-const logoSrc = "/homepage/electricien-belgique.png";
-const logoAlt = `Logo ${companyName}`;
-
-const phoneNumberDisplay = "0476/23.23.23";
-const phoneNumberHref = "+32476232323";
-const emailAddress = "contact@electricienbelge.be";
-
-const footerNavLinks = [
-    { text: "Accueil", href: "/" },
-    { text: "À Propos de Nous", href: "/a-propos/" },
-    { text: "Contactez-Nous", href: "/contact/" },
-];
-
+import { data as locationsData } from '../data/locations.ts';
 ---
 <footer class="bg-gray-800 text-gray-300 print:hidden">
-    <div class="container mx-auto px-6 py-12 md:py-16">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            {/* Column 1: Logo and About */}
-            <div class="md:col-span-2 lg:col-span-1">
-                <a href="/" class="inline-block mb-4">
-                    <img src={logoSrc} alt={logoAlt} class="h-12 w-auto" /> {/* Inverted for dark bg */}
-                </a>
-                <p class="text-sm text-gray-400 leading-relaxed">
-                    Votre partenaire de confiance pour tous travaux d'électricité en Belgique. Dépannage urgent, installations, et mises aux normes RGIE.
-                </p>
-            </div>
-
-            {/* Column 2: Liens Utiles */}
-            <div>
-                <h5 class="text-sm font-semibold text-gray-100 uppercase tracking-wider mb-4">Liens Utiles</h5>
-                <ul class="space-y-2">
-                    {footerNavLinks.map(link => (
-                        <li>
-                            <a href={link.href} class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
-                                {link.text}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-
-            {/* Column 3: Contactez-Nous */}
-            <div>
-                <h5 class="text-sm font-semibold text-gray-100 uppercase tracking-wider mb-4">Contactez-Nous</h5>
-                <ul class="space-y-2 text-sm">
-                    <li class="flex items-start">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5 text-gray-400 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                        </svg>
-                        <a href={`tel:${phoneNumberHref}`} class="text-gray-400 hover:text-white transition-colors duration-300">
-                            {phoneNumberDisplay}
-                        </a>
-                    </li>
-                    <li class="flex items-start">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5 text-gray-400 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                             <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                        </svg>
-                        <span class="text-gray-400">Service disponible partout en Belgique</span>
-                    </li>
-                </ul>
-            </div>
-            
-            {/* Column 4: Maybe social links or another set of links if needed */}
-            {/* For now, keeping it to 3 content columns for a cleaner look */}
-            <div>
-                {/* Placeholder for potential future content or can be merged */}
-            </div>
-
-        </div>
-
-        <hr class="border-gray-700 my-8" />
-
-        <div class="text-center text-sm text-gray-500">
-            <p>&copy; {currentYear} {companyName}. Tous droits réservés.</p>
-        </div>
+  <div class="container mx-auto px-6 py-12 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">    
+      <div>
+        <a href="/" class="inline-block mb-4">
+          <img src="/logo-entreprise-elec-express-footer.svg" alt="Logo Elec express société d'éléctricité"
+            width="150" height="60" />
+        </a>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          <strong>Elec Express</strong> ⚡ Électricien pour 🏠 <strong>résidentiel</strong> et 🏢
+          <strong>commerce</strong> en Belgique. 🔧 <strong>Dépannage 7j/7</strong>, ⚙️
+          <strong>installation</strong> et ✅ <strong>mise en conformité RGIE</strong>. Service rapide et fiable.
+        </p>
+      </div>
+      <div>
+        <h5 class="text-sm font-semibold text-gray-100 uppercase tracking-wider mb-4 px-4">Zones d'intervention</h5>
+        <ul class="space-y-2">
+          {locationsData.slice(0, 4).map(province => (
+            <li>
+              <a href={`/electricien-${province.slug}/`} title={`Électriciens ${province.State}`}
+                class="desktop-province-link block px-4 pb-2 text-sm" role="menuitem">
+                Électriciens {province.State}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h5 class="text-sm font-semibold text-gray-100 uppercase tracking-wider mb-4">Contactez-Nous</h5>
+        <ul class="space-y-2 text-sm">
+          <li class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5 text-gray-400 flex-shrink-0"
+              viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            </svg>
+            <a href="tel:+32470424242" class="text-gray-400 hover:text-white transition-colors duration-300">
+              0470/2.42.42
+            </a>
+          </li>
+          <li class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5 text-gray-400 flex-shrink-0"
+              viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="text-gray-400">Service disponible partout en Belgique</span>
+          </li>
+          <li class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5 text-gray-400 flex-shrink-0"
+              viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2.94 6.94A2 2 0 014.88 6h10.24a2 2 0 011.94.94l-7.06 4.12L2.94 6.94z" />
+              <path
+                d="M18 8.24v5.76a2 2 0 01-2 2H4a2 2 0 01-2-2V8.24l7.47 4.36a1 1 0 001.06 0L18 8.24z" />
+            </svg>
+            <a href="mailto:info@elec-express.be" title="Adresse Mail de Elec Express">
+              <span class="text-gray-400">info@elec-express.be</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
+
+    <hr class="border-gray-700 my-8" />
+    <div class="text-center text-sm text-gray-500">
+      <p>
+        Copyright © 2016 - 2025 par
+        <a href="/" title="Elec express Société d'éléctricité">
+          <strong>Elec Express</strong>
+        </a>.
+        Tous droits réservés.
+      </p>
+    </div>
+  </div>
 </footer>
+

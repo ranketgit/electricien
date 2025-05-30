@@ -1,49 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { data as locationsData } from '../data/locations.ts';
-
-const pageTitle = "Electricien professionnel et certifié en Belgique - dépannage 24/7";
-const pageDescription = "Électricien Belge : Dépannage urgent 24/7, installation et mise en conformité électrique partout en Belgique. Intervention rapide et devis gratuit.";
-
-const phoneNumberDisplay = "0476/23.23.23";
-const phoneNumberHref = "+32476232323";
-
-const heroData = {
-    mainTitle: "Votre Électricien de Confiance Partout en Belgique",
-    subTitle: "Dépannage Urgent 24/7, Installation, Mise en Conformité - Intervention Rapide et Professionnelle.",
-    paragraph: "Besoin d'un électricien fiable et rapide, où que vous soyez en Belgique ? Électricien Belge est votre réseau national d'électriciens qualifiés, prêts à intervenir pour toutes vos urgences et travaux électriques. Nous garantissons un service de qualité, des délais respectés et des tarifs transparents. Faites confiance à nos experts pour une intervention sécurisée et efficace !",
-    ctaUrgentText: "0476/23.23.23",
-    ctaUrgentLink: `tel:${phoneNumberHref}`,
-    ctaQuoteText: "Demander un Devis Gratuit",
-    ctaQuoteLink: "/contact/",
-    heroImageUrl: "/homepage/heroimage.png" // Ensure this image path is correct and the image is suitable for a background
-};
-
-const whyChooseUsData = {
-    title: "Pourquoi Choisir Electricien Belge ?",
-    reasons: [
-        {
-            title: "Intervention Rapide Partout en Belgique",
-            text: "Grâce à notre réseau étendu, nous intervenons rapidement dans toutes les provinces et villes de Belgique. Votre urgence est notre priorité."
-        },
-        {
-            title: "Électriciens Qualifiés et Certifiés",
-            text: "Tous nos techniciens sont des professionnels expérimentés et agréés, formés aux dernières normes de sécurité électrique."
-        },
-        {
-            title: "Service Complet 7j/7",
-            text: "Du dépannage urgent aux installations planifiées, nous sommes disponibles 7 jours sur 7 pour répondre à tous vos besoins électriques."
-        },
-        {
-            title: "Devis Gratuits et Transparents",
-            text: "Pas de mauvaise surprise ! Nous vous fournissons un devis clair et détaillé avant chaque intervention non urgente."
-        }
-    ]
-};
-
 const servicesData = {
-    mainTitle: "Nos Services d'Électricité en Belgique",
-    introText: "Découvrez notre gamme complète de services électriques pour particuliers et professionnels. Notre équipe d'électriciens certifiés intervient partout en Belgique pour tous vos besoins en électricité.",
     services: [
         {
             title: "Dépannage Électrique d'Urgence",
@@ -111,202 +69,273 @@ const servicesData = {
     ]
 };
 
-const findElectricianData = {
-    title: "Trouvez Votre Électricien Local en Belgique",
-    text: "Nous couvrons l'ensemble du territoire belge. Sélectionnez votre province ou votre ville pour trouver l'électricien le plus proche de chez vous et découvrir nos services locaux."
-};
 
-const testimonialsData = {
-    title: "Ce que Nos Clients Disent",
-    testimonials: [
-        { quote: "Intervention super rapide à Liège pour une panne ! Électricien pro et efficace. Je recommande !", author: "Marie D., Liège" },
-        { quote: "Travail impeccable pour la mise en conformité de notre maison à Gand. Devis respecté.", author: "Pieter V., Gand" },
-        { quote: "J’ai refait tout l’éclairage de la maison, c’est un bon travail.", author: "Charles, Betrogne." }
-    ]
-};
 
-const finalCtaData = {
-    title: "Prêt à Résoudre Votre Problème Électrique ?",
-    text: "N'attendez pas ! Contactez Electricien Belge dès aujourd'hui pour une intervention rapide ou un devis gratuit pour vos projets électriques en Belgique.",
-    ctaCallText: `Appelez-nous : ${phoneNumberDisplay}`,
-    ctaCallLink: `tel:${phoneNumberHref}`,
-    ctaQuoteText: "Demandez votre Devis en Ligne",
-    ctaQuoteLink: "/contact/"
-};
+
+const meta_title="Electricien professionnel certifié en Belgique⚡24/7";
+const meta_description ="Elec Express votre Elec Express : Dépannage urgent 24/7, installation et mise en conformité électrique partout en Belgique. Intervention rapide et devis gratuit.";
 ---
-<Layout title={pageTitle} description={pageDescription} schema=''>
-    {/* HERO SECTION MODIFIED */}
-    <section 
-        class="relative bg-cover bg-center text-white" 
-        style={`background-image: url('${heroData.heroImageUrl}');`}
-    >
-        {/* Overlay for text readability */}
-        <div class="absolute inset-0 bg-blue-900 opacity-60"></div> {/* Adjusted opacity, can be fine-tuned */}
-        
+<Layout meta_title={meta_title} meta_description={meta_description}>
+    <section class="relative bg-cover bg-center text-white"
+        style="background-image: url('/elec-express-votre-electricien.png')">
+        <div class="absolute inset-0 bg-blue-900 opacity-60"></div>
         <div class="container mx-auto px-6 py-20 md:py-32 text-center relative z-10">
-            <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight mb-6"> {/* Removed text-gray-900, relies on section's text-white */}
-                {heroData.mainTitle}
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+                Votre Électricien de Confiance Partout en Belgique
             </h1>
-
-            {/* Trust Factors */}
             <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-4 my-6 md:my-8">
-                <div class="flex items-center text-xs sm:text-sm text-gray-100"> {/* Text lightened */}
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> {/* Icon color yellow-400 for visibility */}
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <div class="flex items-center text-xs sm:text-sm text-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 text-yellow-400"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <span>Intervention Rapide 24/7</span>
                 </div>
-                <div class="flex items-center text-xs sm:text-sm text-gray-100"> {/* Text lightened */}
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                <div class="flex items-center text-xs sm:text-sm text-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 text-yellow-400"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
                     <span>Techniciens Certifiés</span>
                 </div>
-                <div class="flex items-center text-xs sm:text-sm text-gray-100"> {/* Text lightened */}
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                <div class="flex items-center text-xs sm:text-sm text-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 text-yellow-400"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                     <span>Devis Gratuit & Transparent</span>
                 </div>
-                <div class="flex items-center text-xs sm:text-sm text-gray-100"> {/* Text lightened */}
+                <div class="flex items-center text-xs sm:text-sm text-gray-100">
                     <div class="flex items-center mr-1.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
-                        {/* Repeated stars for brevity in thought process, actual code has 5 */}
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
                     </div>
                     <span>(+150 avis)</span>
                 </div>
             </div>
-            {/* Trust Factors End */}
-            <p class="text-lg md:text-xl text-gray-100 mb-8 max-w-3xl mx-auto"> {/* Text lightened */}
-                {heroData.subTitle}
+            <p class="text-lg md:text-xl text-gray-100 mb-8 max-w-3xl mx-auto">
+                Dépannage Urgent 24/7, Installation, Mise en Conformité - Intervention Rapide et Professionnelle.
             </p>
             <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <a href={heroData.ctaUrgentLink} 
-                   class="w-full sm:w-auto px-6 py-3 sm:px-8 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-blue-900 text-base sm:text-lg"> {/* Yellow outline button, text on hover dark blue for contrast */}
-                    {heroData.ctaUrgentText}
-                </a>
-                <a href={heroData.ctaQuoteLink}
-                   class="w-full sm:w-auto px-6 py-3 sm:px-8 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-blue-900 hover:bg-yellow-600 text-base sm:text-lg"> {/* Solid yellow button, dark blue text for contrast */}
-                    {heroData.ctaQuoteText}
+                <aa href="tel:+32470424242" title="Téléphone de Elec express"
+                    class="w-full sm:w-auto px-6 py-3 sm:px-8 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-blue-900 text-base sm:text-lg">
+                    Tél 0470/42.42.42
+                </aa>
+                <a href="/contact/" title="Contact de Elec express"
+                    class="w-full sm:w-auto px-6 py-3 sm:px-8 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-blue-900 hover:bg-yellow-600 text-base sm:text-lg">
+                    Demander un Devis Gratuit
                 </a>
             </div>
-            <p class="text-md md:text-lg text-gray-200 mt-10 max-w-3xl mx-auto"> {/* Text lightened */}
-                {heroData.paragraph}
+            <p class="text-md md:text-lg text-gray-200 mt-10 max-w-3xl mx-auto">
+                Besoin d'un électricien fiable et rapide, où que vous soyez en Belgique ? Elec Express est votre
+                réseau national d'électriciens qualifiés, prêts à intervenir pour toutes vos urgences et travaux
+                électriques. Nous garantissons un service de qualité, des délais respectés et des tarifs transparents.
+                Faites confiance à nos experts pour une intervention sécurisée et efficace !
             </p>
         </div>
-        {/* Removed the separate image div from here */}
     </section>
-
-    {/* Why Choose Us Section - Unchanged */}
     <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{whyChooseUsData.title}</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Pourquoi Choisir Electricien Belge ?
+                </h2>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                {whyChooseUsData.reasons.map(reason => (
-                    <div class="bg-gray-50 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-xl font-semibold text-yellow-700 mb-3">{reason.title}</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">{reason.text}</p>
-                    </div>
-                ))}
+                <div class="bg-gray-50 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">
+                        Intervention Rapide Partout en Belgique
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Grâce à notre réseau étendu, nous intervenons rapidement dans toutes les provinces et villes de
+                        Belgique. Votre urgence est notre priorité.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">
+                        Électriciens Qualifiés et Certifiés
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Tous nos techniciens sont des professionnels expérimentés et agréés, formés aux dernières normes
+                        de sécurité électrique.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">
+                        Service Complet 7j/7
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Du dépannage urgent aux installations planifiées, nous sommes disponibles 7 jours sur 7 pour
+                        répondre à tous vos besoins électriques.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">
+                        Devis Gratuits et Transparents
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Pas de mauvaise surprise ! Nous vous fournissons un devis clair et détaillé avant chaque
+                        intervention non urgente.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
-
-    {/* Services Section - Unchanged */}
     <section id="services" class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{servicesData.mainTitle}</h2>
-                <p class="text-lg text-gray-700 max-w-2xl mx-auto">{servicesData.introText}</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Nos Services d'électricité en Belgique
+                </h2>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+                    Découvrez tous nos <strong>services d’électricité</strong> en <strong>Belgique</strong>, adaptés
+                    aux <strong>particuliers</strong> et <strong>professionnels</strong>.
+                    Nos <strong>électriciens certifiés</strong> interviennent 7j/7 pour l’<strong>installation</strong>,
+                    le <strong>dépannage</strong> ⚡ et la <strong>mise en conformité RGIE</strong> ✅ partout sur le
+                    territoire.
+                </p>
             </div>
 
             {servicesData.services.map((service, index) => (
-                <section class={`py-10 md:py-16 overflow-hidden ${index > 0 ? 'border-t border-gray-200' : ''}`}>
-                    <div class="container mx-auto px-4 sm:px-6">
-                        <div class={`flex flex-wrap items-center -mx-4 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-                            <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
-                                <h3 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">{service.title}</h3>
-                                <p class="text-gray-700 mb-6 leading-relaxed">{service.description}</p>
-                                {service.keyPoints && service.keyPoints.length > 0 && (
-                                    <div class="mb-6">
-                                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Points clés:</h4>
-                                        <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm sm:text-base">
-                                            {service.keyPoints.map(point => <li>{point}</li>)}
-                                        </ul>
-                                    </div>
-                                )}
-                                <a href={`tel:${phoneNumberHref}`} 
-                                   class="w-full sm:w-auto inline-block text-center px-6 py-3 sm:px-8 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-base sm:text-lg">
-                                    {phoneNumberDisplay}
-                                </a>
+            <section class={`py-10 md:py-16 overflow-hidden ${index> 0 ? 'border-t border-gray-200' : ''}`}>
+                <div class="container mx-auto px-4 sm:px-6">
+                    <div class={`flex flex-wrap items-center -mx-4 ${index % 2===1 ? 'md:flex-row-reverse' : '' }`}>
+                        <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
+                            <h3 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">{service.title}</h3>
+                            <p class="text-gray-700 mb-6 leading-relaxed">{service.description}</p>
+                            {service.keyPoints && service.keyPoints.length > 0 && (
+                            <div class="mb-6">
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Points clés:</h4>
+                                <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm sm:text-base">
+                                    {service.keyPoints.map(point => <li>{point}</li>)}
+                                </ul>
                             </div>
-                            <div class="w-full md:w-1/2 px-4">
-                                <img src={service.imageUrl} alt={service.imageAlt} class="rounded-2xl shadow-xl w-full h-auto object-cover" style="max-height: 400px; md:max-height: 450px;" loading="lazy"/>
-                            </div>
+                            )}
+                            <a href="tel:+32470424242"
+                                class="w-full sm:w-auto inline-block text-center px-6 py-3 sm:px-8 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-base sm:text-lg">
+                                0470/42.42.42
+                            </a>
+                        </div>
+                        <div class="w-full md:w-1/2 px-4">
+                            <img src={service.imageUrl} alt={service.imageAlt}
+                                class="rounded-2xl shadow-xl w-full h-auto object-cover"
+                                style="max-height: 400px; md:max-height: 450px;" loading="lazy" />
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
             ))}
         </div>
     </section>
 
-    {/* Find Local Electrician Section - Unchanged (uses updated styling from previous fix) */}
     <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{findElectricianData.title}</h2>
-                <p class="text-lg text-gray-700 max-w-2xl mx-auto">{findElectricianData.text}</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Trouvez votre électricien local en Belgique
+                </h2>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+                    Nos <strong>électriciens professionnels</strong> interviennent partout en <strong>Belgique</strong>
+                    ⚡. Choisissez votre <strong>province</strong> pour trouver un <strong>électricien local</strong>
+                    fiable et découvrir nos <strong>services électriques</strong> près de chez vous.
+                </p>
+
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+            <div class="flex flex-wrap justify-center gap-6 md:gap-8">
                 {locationsData.map(stateEntry => (
-                    <a href={`/electricien-${stateEntry.slug}/`} 
-                       class="block bg-white text-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 text-center">
-                        <span class="font-semibold text-lg md:text-xl">{stateEntry.State}</span>
+                    <a href={`/electricien-${stateEntry.slug}/`}
+                    class="w-full sm:w-64 bg-white text-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 text-center">
+                    <span class="font-semibold text-lg md:text-xl">{stateEntry.State}</span>
                     </a>
                 ))}
             </div>
         </div>
     </section>
 
-    {/* Testimonials Section - Unchanged */}
     <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">{testimonialsData.title}</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+                    Ce que Nos Clients Disent
+                </h2>
             </div>
             <div class="grid md:grid-cols-3 gap-6 md:gap-8">
-                {testimonialsData.testimonials.map(testimonial => (
-                    <div class="bg-gray-50 p-6 sm:p-8 rounded-2xl shadow-lg">
-                        <p class="text-gray-600 italic mb-6 text-sm sm:text-base">{testimonial.quote}</p>
-                        <p class="text-right font-semibold text-gray-700 text-sm sm:text-base">- {testimonial.author}</p>
-                    </div>
-                ))}
+
+                <div class="bg-gray-50 p-6 sm:p-8 rounded-2xl shadow-lg">
+                    <p class="text-gray-600 italic mb-6 text-sm sm:text-base">
+                        Intervention super rapide à Liège pour une panne ! Électricien pro et efficace. Je recommande !
+                    </p>
+                    <p class="text-right font-semibold text-gray-700 text-sm sm:text-base">
+                        - Marie D., Liège
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-6 sm:p-8 rounded-2xl shadow-lg">
+                    <p class="text-gray-600 italic mb-6 text-sm sm:text-base">
+                        Travail impeccable pour la mise en conformité de notre maison à Gand. Devis respecté.
+                    </p>
+                    <p class="text-right font-semibold text-gray-700 text-sm sm:text-base">
+                        - Pieter V., Gand
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-6 sm:p-8 rounded-2xl shadow-lg">
+                    <p class="text-gray-600 italic mb-6 text-sm sm:text-base">
+                        J’ai refait tout l’éclairage de la maison, c’est un bon travail.
+                    </p>
+                    <p class="text-right font-semibold text-gray-700 text-sm sm:text-base">
+                        - Charles, Betrogne.
+                    </p>
+                </div>
+
             </div>
         </div>
     </section>
 
-    {/* Final CTA Section - Unchanged */}
     <section id="contact" class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6 text-center">
             <div class="bg-gray-50 p-6 md:p-12 rounded-3xl shadow-xl max-w-3xl mx-auto">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6">{finalCtaData.title}</h2>
-                <p class="text-base sm:text-lg text-gray-700 mb-10">{finalCtaData.text}</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                    Prêt à résoudre votre souci électrique ?
+                </h2>
+                <p class="text-base sm:text-lg text-gray-700 mb-10">
+                    N'attendez pas ! Contactez <strong>Elec Express</strong> dès aujourd'hui pour une
+                    <strong>intervention rapide</strong> ou un <strong>devis gratuit</strong> pour vos <strong>travaux
+                        électriques</strong> en <strong>Belgique</strong>.
+                </p>
+
                 <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href={finalCtaData.ctaCallLink} 
-                       class="w-full sm:w-auto px-6 py-3 sm:px-8 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-base sm:text-lg">
-                        {finalCtaData.ctaCallText}
+                    <a href="tel:+32470424242" title="Téléphone Elec Express"
+                        class="w-full sm:w-auto px-6 py-3 sm:px-8 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-base sm:text-lg">
+                        Appelez-nous : 0470/42.42.42
                     </a>
-                    <a href={finalCtaData.ctaQuoteLink} 
-                       class="w-full sm:w-auto px-6 py-3 sm:px-8 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-white hover:bg-yellow-700 text-base sm:text-lg">
-                        {finalCtaData.ctaQuoteText}
+                    <a href="Contact Elec Express" title="Contactez Elec Express"
+                        class="w-full sm:w-auto px-6 py-3 sm:px-8 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-white hover:bg-yellow-700 text-base sm:text-lg">
+                        Demandez votre Devis en Ligne
                     </a>
                 </div>
             </div>

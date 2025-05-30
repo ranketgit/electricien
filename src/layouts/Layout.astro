@@ -1,35 +1,51 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { generateSchema } from '../seo/schema';
 import '../styles/global.css';
 
-interface Props {
-	title: string;
-    description: string;
-    schema: string;
+export interface Props {
+  meta_title?: string;
+  meta_description?: string;
+  meta_image?: string;
+  schemaMarkup?: object;
 }
-
-const { title, description, schema } = Astro.props;
-const siteName = "Électricien Belge";
-const canonicalUrl = Astro.url.pathname
+const { meta_title, meta_description, meta_image ="/https://elec-express.be/elec-express-votre-solution-electrique-immediate.webp", schemaMarkup } = Astro.props;
 ---
 <!doctype html>
 <html lang="fr-BE">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <link rel="icon" type="image/svg+xml" href="/electrician-belge-favicon.png" />
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <title>{meta_title}</title>
+    <link rel="canonical" href={new URL(Astro.url.pathname, import.meta.env.SITE).href} item-prop="url" />
+    <meta name="description" content={meta_description} />
+    <meta name="author" content="Elec Express" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Elec-Express" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="canonical" href=`https://electricien-belge.be${canonicalUrl}`/>
-    <title>{title}</title>
-    <script type="application/ld+json" set:html={JSON.stringify(generateSchema(title, description))} />
-</head>
+    <meta name="theme-name" content="sosdebouche" />
+    <meta name="generator" content="Elec Express" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={meta_title} />
+    <meta property="og:description" content={meta_description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, import.meta.env.SITE).href} />
+    <meta name="twitter:title" content={meta_title} />
+    <meta name="twitter:description" content={meta_description} />
+    <meta property="og:image" content={meta_image} />
+    <meta name="twitter:image" content={meta_image} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {
+    schemaMarkup && (
+        <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
+    )
+    }
+    </head>
 <body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen font-sans">
     <Header />
     <main class="flex-grow">
