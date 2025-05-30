@@ -108,43 +108,44 @@ const finalCtaButton2Link = `tel:${phoneNumberHref}`;
 ---
 
 <Layout title={pageTitle} description={metaDescription} schema='' >
-    {/* HERO SECTION MODIFIED for Background Image and Single Button */}
     <section 
         class="relative bg-cover bg-center text-white"
         style={`background-image: url('${heroImageUrl}');`}
         role="img"
         aria-label=`Électricien ${currentCity.cityName}`
     >
-        {/* Overlay for text readability */}
-        <div class="absolute inset-0 bg-blue-900 opacity-60"></div> {/* Adjust opacity as needed */}
+        <div class="absolute inset-0 bg-blue-900 opacity-60"></div> 
         
         <div class="container mx-auto px-6 text-center py-20 md:py-32 relative z-10">
             <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6">
                 {h1Content}
             </h1>
-            <p class="text-lg md:text-xl text-gray-100 mb-8 max-w-3xl mx-auto"> {/* mb-8 for space before button */}
+            <p class="text-lg md:text-xl text-gray-100 mb-8 max-w-3xl mx-auto"> 
                 {heroIntroP1}
             </p>
-            {/* ADDED SINGLE SOLID BUTTON TO HERO - Placed under the first paragraph */}
-            <div class="flex justify-center items-center mb-8"> {/* mb-8 for space after button */}
+
+            <div class="flex justify-center items-center mb-8"> 
                 <a href={`tel:${phoneNumberHref}`} 
                    class="w-full sm:w-auto px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-black hover:bg-yellow-600 text-lg">
                     {phoneNumberDisplay}
                 </a>
             </div>
-            {/* The original brief for the city page only had one intro paragraph for the hero section. */}
-            {/* If there was a second one like in the state page, it would go here. */}
-            {/* For now, based on the city brief, the hero text concludes after heroIntroP1 and the button. */}
-        </div>
-        {/* Image is now background, so no separate img tag here */}
-    </section>
 
-    {/* Services Section - Unchanged from your provided code's styling preference */}
+        </div>
+    </section>
     <section class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{servicesMainTitle}</h2>
             <p class="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">{servicesIntro}</p>
-            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-10 mb-12"> {/* Changed md:grid-cols-1 to md:grid-cols-2 for services list from your brief */}
+            <div class="mb-12 text-center">
+                <img 
+                    src= "/homepage/electrician-state.avif"
+                    alt={`Nos Services d'Électricité à ${currentCity.cityName}`}
+                    class="mx-auto rounded-lg shadow-lg max-h-80 w-auto object-contain" 
+                    loading="lazy"
+                /> 
+            </div>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-10 mb-12"> 
                 {cityServices.map(service => (
                     <div class="bg-white p-6 rounded-2xl shadow-xl">
                         <h3 class="text-xl font-semibold text-yellow-700 mb-3">{service.title}</h3>
