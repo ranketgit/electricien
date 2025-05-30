@@ -1,6 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro'; // Using your import path
-import { data as locationsData } from '../data/locations.ts'; // Using your import path
+import Layout from '../layouts/Layout.astro';
+import { data as locationsData } from '../data/locations.ts';
+import { generateSchema } from "../seo/schema";
 
 export async function getStaticPaths() {
   return locationsData.map(province => ({
@@ -10,9 +11,6 @@ export async function getStaticPaths() {
 }
 
 const { currentProvince } = Astro.props;
-// Corrected dynamic strings
-const pageTitle = `Électricien ${currentProvince.State} - Services électriques Complets | Elec Express`;
-const metaDescription = `Trouvez votre électricien de confiance dans ${currentProvince.State}. Elec Express. intervient pour dépannage, installation et mise aux normes. Devis rapide.`;
 
 const h1Content = `Électricien en ${currentProvince.State} : Votre Réseau d'Experts Locaux`;
 const introParagraph1 = `Vous habitez en ${currentProvince.State} et recherchez un service d'électricité fiable et réactif ? Elec Express est votre référence pour tous les travaux et dépannages électriques dans l'ensemble de ${currentProvince.State}.`;
@@ -83,10 +81,16 @@ const finalCta = {
     button1Text: "Obtenir un Devis Gratuit",
     button1Link: "/contact/",
     button2Text: `Urgence 24h/7j : 0470/42.42.42`,
-    button2Link: `tel:${+32470424242}`
+    button2Link: "tel:+32470424242"
 };
+
+const meta_title = `Électricien ${currentProvince.State} ⭐ Elec Express`;
+const meta_description = `Trouvez votre électricien de confiance dans la ${currentProvince.State}. Elec Express intervient pour dépannage, installation et mise aux normes. Devis rapide ☎️ 0470/42.42.42.`;
+
+const schemaMarkup = generateSchema(meta_title, meta_description, 5);
 ---
-<Layout title={pageTitle} description={metaDescription} schema=''>
+
+<Layout meta_title={meta_title} meta_description={meta_description} schemaMarkup={schemaMarkup} >
     <section 
         class="relative bg-cover bg-center text-white"
         style={`background-image: url('${provinceHeroImageUrl}');`}

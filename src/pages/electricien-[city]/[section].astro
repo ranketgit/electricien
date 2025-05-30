@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'; // Using your import path
 import { data as locationsData } from '../../data/locations.ts'; // Using your import path
+import { generateSchema } from "../../seo/schema";
 
 export async function getStaticPaths() {
   const paths = [];
@@ -25,8 +26,6 @@ export async function getStaticPaths() {
 
 const { currentSection, currentCity, currentProvinceName } = Astro.props;
 
-const pageTitle = `Électricien ${currentSection.name} (${currentCity.cityName}) - Dépannage Rapide | Elec Express`;
-const metaDescription = `Votre électricien de proximité dans le quartier ${currentSection.name} à ${currentCity.cityName}. Intervention rapide pour pannes, installations et mises aux normes. Contactez Elec Express !`;
 
 const sectionHeroImageUrl = `/homepage/electrician-state.avif`; // Using your image path - ensure it's suitable for a background
 const h1Content = `Électricien ${currentSection.name}, ${currentCity.cityName} : Votre Expert de Proximité`;
@@ -81,10 +80,14 @@ const finalCtaText = `Habitants et professionnels du quartier ${currentSection.n
 const finalCtaButton1Text = `Devis Gratuit pour ${currentSection.name}`;
 const finalCtaButton1Link = "/contact/";
 const finalCtaButton2Text = `Appelez votre expert local au 0470/42.42.42`;
-const finalCtaButton2Link = `tel:${+32470424242}`;
+const finalCtaButton2Link = "tel:+32470424242";
+
+const meta_title = `Électricien ${currentSection.name} ⚡ Elec Express`;
+const meta_description = `Votre électricien de proximité à ${currentSection.name} - ${currentCity.cityName} ⚡ Intervention rapide pour pannes, installations et mises aux normes. Contactez Elec Express ☎️ 0470/42.42.42 !`;
+const schemaMarkup = generateSchema(meta_title, meta_description, 7);
 ---
 
-<Layout title={pageTitle} description={metaDescription} schema=''>
+<Layout meta_title={meta_title} meta_description={meta_description} schemaMarkup={schemaMarkup} >
     <section 
         class="relative bg-cover bg-center text-white"
         style={`background-image: url('${sectionHeroImageUrl}');`}

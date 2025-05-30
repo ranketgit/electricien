@@ -1,9 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-
-const pageTitle = "À Propos de Nous";
-const pageDescription = "Découvrez Elec Express, votre partenaire de confiance pour tous vos travaux et dépannages électriques en Belgique. Notre engagement : expertise, rapidité et satisfaction client.";
+import { generateSchema } from "../seo/schema";
 
 
 const heroData = {
@@ -47,10 +44,15 @@ const ctaData = {
     ctaPrimaryText: "Demander un Devis Gratuit",
     ctaPrimaryLink: "/contact/",
     ctaSecondaryText: `Appelez-nous : 0470/42.42.42`,
-    ctaSecondaryLink: `tel:${+32470424242}`
+    ctaSecondaryLink: "tel:+32470424242"
 };
+const meta_title = "À propos de Elec Express ⚡ Électricien de confiance";
+const meta_description = "Découvrez Elec Express, votre partenaire de confiance pour tous vos travaux et dépannages électriques en Belgique. Notre engagement : expertise, rapidité et satisfaction client.";
+
+const schemaMarkup = generateSchema(meta_title, meta_description, 7);
 ---
-<Layout title={pageTitle} description={pageDescription} schema=''>
+
+<Layout meta_title={meta_title} meta_description={meta_description} schemaMarkup={schemaMarkup} >
     <section class="bg-white text-gray-800">
         <div class="container mx-auto px-6 py-16 md:py-24 text-center">
             <h1 class="text-4xl sm:text-5xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
