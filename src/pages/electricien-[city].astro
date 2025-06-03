@@ -22,84 +22,6 @@ export async function getStaticPaths() {
 
 const { currentCity, currentProvinceName, currentProvinceSlug } = Astro.props;
 
-const heroImageUrl = `/homepage/electrician-hero-city.avif`; // Using your image path, ensure it's suitable for a background
-const h1Content = `Électricien à ${currentCity.cityName} : Votre Expert Local pour Tous Vos Besoins Électriques`;
-const heroIntroP1 = `Vous recherchez un électricien compétent et réactif à ${currentCity.cityName} ? Elec Express est votre partenaire de confiance pour tous vos travaux électriques. Que vous ayez besoin d'un dépannage électrique immédiat, d'une nouvelle installation ou d'une mise aux normes RGIE de votre système à ${currentCity.cityName}, notre équipe d'artisans électriciens qualifiés dessert toute la commune de ${currentCity.cityName} et ses environs, garantissant des interventions rapides et efficaces pour tous vos travaux d'électricité.`;
-
-// --- UNCHANGED FRONTMATTER SECTIONS BELOW THIS LINE (Services, Pourquoi Choisir, etc. as you provided) ---
-const servicesMainTitle = `Nos Services d'Électricité à ${currentCity.cityName}`;
-const servicesIntro = `Chez Elec Express, nous proposons une gamme complète de services électriques pour répondre à tous vos besoins à ${currentCity.cityName} :`;
-const cityServices = [
-    { title: "Dépannage Électrique Urgent 24h/7j", text: `Une panne de courant ou un court-circuit à ${currentCity.cityName} ? Nos électriciens interviennent rapidement pour diagnostiquer et réparer toute panne électrique : disjoncteurs qui sautent, prises défaillantes, problèmes de tableau électrique. Intervention garantie en moins de 2 heures pour assurer votre sécurité et minimiser les désagréments.` },
-    { title: "Installation Électrique Neuve et Rénovation", text: `Vous construisez ou rénovez à ${currentCity.cityName} ? Nous réalisons l'installation complète de votre système électrique conforme aux normes RGIE belges : tableau électrique moderne, câblage aux normes, prises et éclairage optimisés. Chaque installation est personnalisée selon vos besoins et respecte les standards de sécurité les plus stricts.` },
-    { title: "Mise en Conformité Électrique RGIE", text: `Votre installation à ${currentCity.cityName} n'est plus aux normes ? Nous effectuons le diagnostic complet et les travaux nécessaires pour obtenir votre certificat de conformité RGIE. Notre service inclut l'accompagnement lors du contrôle par l'organisme agréé et la garantie de conformité de votre installation.` },
-    { title: "Installation d'Éclairage LED et Solutions Économiques", text: `Pour votre domicile ou votre entreprise à ${currentCity.cityName}, nous installons tous types de luminaires et systèmes d'éclairage LED en optimisant la consommation d'énergie. Solutions d'éclairage architectural, décoratif et fonctionnel pour valoriser tous vos espaces intérieurs et extérieurs.` },
-    { title: "Parlophonie et Vidéophonie Moderne", text: `Sécurisez l'accès à votre domicile ou bâtiment à ${currentCity.cityName} avec nos solutions d'interphones et vidéophones modernes. Systèmes filaires traditionnels ou connectés avec contrôle à distance via smartphone, compatibles avec serrures électriques.` },
-    { title: "Domotique et Maison Connectée", text: `Rendez votre maison à ${currentCity.cityName} plus intelligente et confortable grâce à nos installations domotiques personnalisées. Gestion centralisée de l'éclairage, chauffage, volets, alarme et autres équipements électriques via smartphone ou tablette.` },
-    { title: "Installation de Bornes de Recharge pour Véhicules Électriques", text: `Vous possédez un véhicule électrique à ${currentCity.cityName} ? Nous installons des bornes de recharge efficaces et sécurisées, adaptées à tous types de véhicules. Solutions pour particuliers et entreprises avec étude de faisabilité et systèmes intelligents de gestion.` }
-];
-const servicesSpecialisesTitle = "Services Spécialisés Complémentaires";
-const servicesSpecialisesList = [
-    "Tableaux électriques : Installation, mise à niveau et protection optimale",
-    "Chauffage électrique : Installation et maintenance de systèmes performants",
-    "Éclairage de sécurité : Solutions d'urgence et de balisage conformes",
-    "Réseaux informatiques : Câblage et installation de prises RJ45"
-];
-
-const pourquoiTitle = `Pourquoi Choisir Elec Express à ${currentCity.cityName} ?`;
-const pourquoiIntro = `Faire appel à Elec Express pour vos travaux électriques à ${currentCity.cityName} présente de nombreux avantages :`;
-const pourquoiPoints = [
-    { title: "Rapidité d'Intervention Garantie", text: `Notre proximité nous permet d'intervenir plus rapidement en cas d'urgence à ${currentCity.cityName}. Délais d'intervention optimisés avec équipes locales disponibles 24h/24 et 7j/7.` },
-    { title: "Expertise Locale et Certifiée", text: `Nous connaissons les spécificités locales de ${currentCity.cityName} et les particularités des installations électriques courantes dans la région. Tous nos électriciens sont certifiés et formés aux dernières normes RGIE.` },
-    { title: "Flexibilité et Disponibilité Maximale", text: `Nous nous adaptons à vos horaires pour les rendez-vous et les interventions à ${currentCity.cityName}. Service personnalisé avec suivi de chantier et conseil technique gratuit.` },
-    { title: "Transparence Tarifaire Totale", text: `Devis gratuits, détaillés et sans engagement. Tarifs compétitifs et transparents sans frais cachés. Facturation claire avec détail des prestations.` },
-    { title: "Garantie Qualité et Sécurité", text: `Matériel de qualité supérieure, installation conforme RGIE et garantie sur tous nos travaux. Assurance responsabilité civile professionnelle pour votre tranquillité.` }
-];
-
-const delaisTitle = `Délais d'Intervention et Zone de Couverture autour de ${currentCity.cityName}`;
-const delaisP1 = `Nous nous engageons à intervenir dans les plus brefs délais pour les urgences électriques à ${currentCity.cityName}, généralement en moins de 2 heures. Notre réactivité est une priorité absolue pour tous nos clients.`;
-const delaisP2 = `Zone d'intervention principale : Ensemble de la commune de ${currentCity.cityName} et communes limitrophes dans un rayon de 25 km.`;
-const delaisP3 = `Communes voisines desservies : Nous intervenons également dans les localités proches de ${currentCity.cityName} avec les mêmes délais de réactivité. Contactez-nous pour confirmer notre couverture dans votre zone spécifique.`;
-
-const tarifsTitle = `Exemples de Tarifs Indicatifs pour nos Prestations à ${currentCity.cityName}`;
-const tarifsIntro = `Nous privilégions la transparence tarifaire. Voici quelques exemples de tarifs estimatifs pour nos services d'électricien à ${currentCity.cityName} :`;
-const tarifsList = [
-    "Taux horaire dépannage (heures ouvrables) : 45€ - 65€",
-    "Forfait diagnostic de panne : à partir de 85€",
-    "Mise en conformité RGIE (estimation/m²) : 25€ - 45€",
-    "Installation prise supplémentaire : à partir de 120€",
-    "Remplacement tableau électrique : 800€ - 1500€",
-    "Installation borne de recharge : 1200€ - 2500€"
-];
-const tarifsOutro = `Ces prix sont indicatifs et peuvent varier selon la complexité du projet. Devis gratuit et personnalisé disponible sous 24h pour tous vos projets à ${currentCity.cityName}.`;
-
-const temoignagesTitle = `Témoignages de nos Clients Satisfaits à ${currentCity.cityName}`;
-const cityTemoignages = [
-    { quote: `Panne électrique totale un dimanche soir à ${currentCity.cityName}. L'électricien d'Elec Express est arrivé en 1h30, a trouvé le problème rapidement et tout est rentré dans l'ordre. Service impeccable et tarif honnête !`, author: `Sophie Delcroix, ${currentCity.cityName}`, context: "Intervention remarquable en urgence" },
-    { quote: `Nous avons confié la rénovation électrique complète de notre maison ancienne à ${currentCity.cityName} à Elec Express. Travail soigné, respect des délais, conseils précieux et conformité RGIE obtenue du premier coup. Hautement recommandé !`, author: `Marc et Isabelle Laurent, ${currentCity.cityName}`, context: "Rénovation électrique complète parfaite" },
-    { quote: `Installation rapide et professionnelle de notre borne de recharge à ${currentCity.cityName}. Devis clair, travail propre et explications détaillées du fonctionnement. Parfait pour notre Tesla !`, author: `Famille Dubois, ${currentCity.cityName}`, context: "Installation borne de recharge impeccable" },
-    { quote: `Installation électrique des années 80 à mettre aux normes pour la vente. Elec Express a géré tout le processus, du diagnostic à la certification. Travail irréprochable et délais respectés.`, author: `Jean-Pierre Moreau, ${currentCity.cityName}`, context: "Mise aux normes efficace" }
-];
-
-const faqTitle = `Questions Fréquentes - Électricien à ${currentCity.cityName}`;
-const cityFaqItems = [
-    { q: `Quels sont vos délais d'intervention pour une urgence électrique à ${currentCity.cityName} ?`, a: `Pour les urgences à ${currentCity.cityName}, nous intervenons généralement en moins de 2 heures, 24h/24 et 7j/7. Nos équipes locales permettent une réactivité optimale même les week-ends et jours fériés.` },
-    { q: `Proposez-vous des devis gratuits pour les travaux électriques à ${currentCity.cityName} ?`, a: `Oui, nous offrons des devis gratuits, détaillés et sans engagement pour tous les projets d'installation, rénovation ou mise en conformité à ${currentCity.cityName}. Estimation sur place ou à distance selon la nature des travaux.` },
-    { q: `Êtes-vous agréé pour réaliser une mise en conformité RGIE à ${currentCity.cityName} ?`, a: `Absolument. Nos électriciens sont certifiés et agréés pour effectuer les mises aux normes RGIE. Nous vous accompagnons jusqu'à l'obtention de votre certificat de conformité à ${currentCity.cityName}.` },
-    { q: `Intervenez-vous aussi le week-end et les jours fériés à ${currentCity.cityName} ?`, a: `Oui, nous assurons un service de dépannage 7j/7, y compris le week-end et les jours fériés pour les urgences électriques à ${currentCity.cityName}. Tarifs majorés appliqués selon les horaires.` },
-    { q: `Quelles garanties offrez-vous sur vos travaux à ${currentCity.cityName} ?`, a: `Nous garantissons tous nos travaux électriques : 2 ans sur la main d'œuvre et selon garantie constructeur sur le matériel. Assurance décennale pour les gros travaux et responsabilité civile professionnelle.` },
-    { q: `Acceptez-vous les paiements échelonnés pour les gros travaux ?`, a: `Oui, nous proposons des facilités de paiement pour les projets importants à ${currentCity.cityName} : acompte à la commande, échéancier selon avancement des travaux, possibilité de paiement en plusieurs fois.` }
-];
-
-const citySectionsTitle = `Nos zones d’intervention en ${currentCity.cityName}:`;
-
-const finalCtaTitle = `Contactez Elec Express à ${currentCity.cityName}`;
-const finalCtaText = `N'attendez plus pour résoudre vos problèmes électriques ou concrétiser vos projets à ${currentCity.cityName} ! Pour une intervention rapide, un service de qualité et des conseils d'expert, faites confiance à Elec Express.`;
-const finalCtaButton1Text = `Demandez votre Devis Gratuit à ${currentCity.cityName}`;
-const finalCtaButton1Link = "/contact/";
-const finalCtaButton2Text = `Urgence 24h/7j : 0470/42.42.42`;
-const finalCtaButton2Link = "tel:+32470424242";
-
 const meta_title = `Électricien ${currentCity.cityName} 💥 Elec Express`;
 const meta_description = `Besoin d'un électricien fiable à ${currentCity.cityName} ? ⭐ Intervention rapide 7j/7 pour dépannage, installation, mise en conformité. Demandez votre devis gratuit ☎️ 0470/42.42.42!`;
 const schemaMarkup = generateSchema(meta_title, meta_description, 7);
@@ -108,18 +30,18 @@ const schemaMarkup = generateSchema(meta_title, meta_description, 7);
 <Layout meta_title={meta_title} meta_description={meta_description} schemaMarkup={schemaMarkup} >
     <section 
         class="relative bg-cover bg-center text-white"
-        style={`background-image: url('${heroImageUrl}');`}
+        style="background-image: url('/homepage/electrician-hero-city.avif');"
         role="img"
-        aria-label=`Électricien ${currentCity.cityName}`
+        aria-label={`Électricien ${currentCity.cityName}`}
     >
         <div class="absolute inset-0 bg-blue-900 opacity-60"></div> 
         
         <div class="container mx-auto px-6 text-center py-20 md:py-32 relative z-10">
             <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6">
-                {h1Content}
+                {`Électricien à ${currentCity.cityName} : Votre Expert Local pour Tous Vos Besoins Électriques`}
             </h1>
             <p class="text-lg md:text-xl text-gray-100 mb-8 max-w-3xl mx-auto"> 
-                {heroIntroP1}
+                {`Vous recherchez un électricien compétent et réactif à ${currentCity.cityName} ? Elec Express est votre partenaire de confiance pour tous vos travaux électriques. Que vous ayez besoin d'un dépannage électrique immédiat, d'une nouvelle installation ou d'une mise aux normes RGIE de votre système à ${currentCity.cityName}, notre équipe d'artisans électriciens qualifiés dessert toute la commune de ${currentCity.cityName} et ses environs, garantissant des interventions rapides et efficaces pour tous vos travaux d'électricité.`}
             </p>
 
             <div class="flex justify-center items-center mb-8"> 
@@ -133,118 +55,222 @@ const schemaMarkup = generateSchema(meta_title, meta_description, 7);
     </section>
     <section class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{servicesMainTitle}</h2>
-            <p class="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">{servicesIntro}</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{`Nos Services d'Électricité à ${currentCity.cityName}`}</h2>
+            <p class="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">{`Chez Elec Express, nous proposons une gamme complète de services électriques pour répondre à tous vos besoins à ${currentCity.cityName} :`}</p>
             <div class="mb-12 text-center">
                 <img 
-                    src= "/homepage/electrician-state.avif"
+                    src="/homepage/electrician-state.avif"
                     alt={`Nos Services d'Électricité à ${currentCity.cityName}`}
                     class="mx-auto rounded-lg shadow-lg max-h-80 w-auto object-contain" 
                     loading="lazy"
                 /> 
             </div>
             <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-10 mb-12"> 
-                {cityServices.map(service => (
-                    <div class="bg-white p-6 rounded-2xl shadow-xl">
-                        <h3 class="text-xl font-semibold text-yellow-700 mb-3">{service.title}</h3>
-                        <p class="text-gray-600 leading-relaxed">{service.text}</p>
-                    </div>
-                ))}
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Dépannage Électrique Urgent 24h/7j</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Une panne de courant ou un court-circuit à ${currentCity.cityName} ? Nos électriciens interviennent rapidement pour diagnostiquer et réparer toute panne électrique : disjoncteurs qui sautent, prises défaillantes, problèmes de tableau électrique. Intervention garantie en moins de 2 heures pour assurer votre sécurité et minimiser les désagréments.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Installation Électrique Neuve et Rénovation</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Vous construisez ou rénovez à ${currentCity.cityName} ? Nous réalisons l'installation complète de votre système électrique conforme aux normes RGIE belges : tableau électrique moderne, câblage aux normes, prises et éclairage optimisés. Chaque installation est personnalisée selon vos besoins et respecte les standards de sécurité les plus stricts.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Mise en Conformité Électrique RGIE</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Votre installation à ${currentCity.cityName} n'est plus aux normes ? Nous effectuons le diagnostic complet et les travaux nécessaires pour obtenir votre certificat de conformité RGIE. Notre service inclut l'accompagnement lors du contrôle par l'organisme agréé et la garantie de conformité de votre installation.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Installation d'Éclairage LED et Solutions Économiques</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Pour votre domicile ou votre entreprise à ${currentCity.cityName}, nous installons tous types de luminaires et systèmes d'éclairage LED en optimisant la consommation d'énergie. Solutions d'éclairage architectural, décoratif et fonctionnel pour valoriser tous vos espaces intérieurs et extérieurs.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Parlophonie et Vidéophonie Moderne</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Sécurisez l'accès à votre domicile ou bâtiment à ${currentCity.cityName} avec nos solutions d'interphones et vidéophones modernes. Systèmes filaires traditionnels ou connectés avec contrôle à distance via smartphone, compatibles avec serrures électriques.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Domotique et Maison Connectée</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Rendez votre maison à ${currentCity.cityName} plus intelligente et confortable grâce à nos installations domotiques personnalisées. Gestion centralisée de l'éclairage, chauffage, volets, alarme et autres équipements électriques via smartphone ou tablette.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Installation de Bornes de Recharge pour Véhicules Électriques</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Vous possédez un véhicule électrique à ${currentCity.cityName} ? Nous installons des bornes de recharge efficaces et sécurisées, adaptées à tous types de véhicules. Solutions pour particuliers et entreprises avec étude de faisabilité et systèmes intelligents de gestion.`}</p>
+                </div>
             </div>
             <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl">
-                <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center md:text-left">{servicesSpecialisesTitle}</h3>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center md:text-left">Services Spécialisés Complémentaires</h3>
                 <ul class="list-disc list-inside text-gray-600 space-y-2 columns-1 md:columns-2 sm:text-base text-sm">
-                    {servicesSpecialisesList.map(item => <li>{item}</li>)}
+                    <li>Tableaux électriques : Installation, mise à niveau et protection optimale</li>
+                    <li>Chauffage électrique : Installation et maintenance de systèmes performants</li>
+                    <li>Éclairage de sécurité : Solutions d'urgence et de balisage conformes</li>
+                    <li>Réseaux informatiques : Câblage et installation de prises RJ45</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    {/* Pourquoi Choisir Section - Unchanged */}
     <section class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{pourquoiTitle}</h2>
-            <p class="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">{pourquoiIntro}</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{`Pourquoi Choisir Elec Express à ${currentCity.cityName} ?`}</h2>
+            <p class="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">{`Faire appel à Elec Express pour vos travaux électriques à ${currentCity.cityName} présente de nombreux avantages :`}</p>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {pourquoiPoints.map(point => (
-                    <div class="bg-white p-6 rounded-2xl shadow-xl h-full">
-                        <h3 class="text-xl font-semibold text-yellow-700 mb-2">{point.title}</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">{point.text}</p>
-                    </div>
-                ))}
+                <div class="bg-white p-6 rounded-2xl shadow-xl h-full">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Rapidité d'Intervention Garantie</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{`Notre proximité nous permet d'intervenir plus rapidement en cas d'urgence à ${currentCity.cityName}. Délais d'intervention optimisés avec équipes locales disponibles 24h/24 et 7j/7.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl h-full">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Expertise Locale et Certifiée</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{`Nous connaissons les spécificités locales de ${currentCity.cityName} et les particularités des installations électriques courantes dans la région. Tous nos électriciens sont certifiés et formés aux dernières normes RGIE.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl h-full">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Flexibilité et Disponibilité Maximale</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{`Nous nous adaptons à vos horaires pour les rendez-vous et les interventions à ${currentCity.cityName}. Service personnalisé avec suivi de chantier et conseil technique gratuit.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl h-full">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Transparence Tarifaire Totale</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{`Devis gratuits, détaillés et sans engagement. Tarifs compétitifs et transparents sans frais cachés. Facturation claire avec détail des prestations.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl h-full">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Garantie Qualité et Sécurité</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{`Matériel de qualité supérieure, installation conforme RGIE et garantie sur tous nos travaux. Assurance responsabilité civile professionnelle pour votre tranquillité.`}</p>
+                </div>
             </div>
         </div>
     </section>
 
-    {/* Délais et Zone Section - Unchanged */}
     <section class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-6 max-w-3xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{delaisTitle}</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{`Délais d'Intervention et Zone de Couverture autour de ${currentCity.cityName}`}</h2>
             <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl space-y-4 text-gray-700 leading-relaxed">
-                <p>{delaisP1}</p>
-                <p>{delaisP2}</p>
-                <p>{delaisP3}</p>
+                <p>{`Nous nous engageons à intervenir dans les plus brefs délais pour les urgences électriques à ${currentCity.cityName}, généralement en moins de 2 heures. Notre réactivité est une priorité absolue pour tous nos clients.`}</p>
+                <p>{`Zone d'intervention principale : Ensemble de la commune de ${currentCity.cityName} et communes limitrophes dans un rayon de 25 km.`}</p>
+                <p>{`Communes voisines desservies : Nous intervenons également dans les localités proches de ${currentCity.cityName} avec les mêmes délais de réactivité. Contactez-nous pour confirmer notre couverture dans votre zone spécifique.`}</p>
             </div>
         </div>
     </section>
 
-    {/* Tarifs Section - Unchanged */}
     <section class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-6 max-w-3xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{tarifsTitle}</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{`Exemples de Tarifs Indicatifs pour nos Prestations à ${currentCity.cityName}`}</h2>
             <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl">
-                <p class="text-gray-700 mb-6 leading-relaxed">{tarifsIntro}</p>
+                <p class="text-gray-700 mb-6 leading-relaxed">{`Nous privilégions la transparence tarifaire. Voici quelques exemples de tarifs estimatifs pour nos services d'électricien à ${currentCity.cityName} :`}</p>
                 <ul class="list-disc list-inside text-gray-600 space-y-2 mb-6">
-                    {tarifsList.map(item => <li>{item}</li>)}
+                    <li>Taux horaire dépannage (heures ouvrables) : 45€ - 65€</li>
+                    <li>Forfait diagnostic de panne : à partir de 85€</li>
+                    <li>Mise en conformité RGIE (estimation/m²) : 25€ - 45€</li>
+                    <li>Installation prise supplémentaire : à partir de 120€</li>
+                    <li>Remplacement tableau électrique : 800€ - 1500€</li>
+                    <li>Installation borne de recharge : 1200€ - 2500€</li>
                 </ul>
-                <p class="text-gray-700 font-medium italic">{tarifsOutro}</p>
+                <p class="text-gray-700 font-medium italic">{`Ces prix sont indicatifs et peuvent varier selon la complexité du projet. Devis gratuit et personnalisé disponible sous 24h pour tous vos projets à ${currentCity.cityName}.`}</p>
             </div>
         </div>
     </section>
 
-    {/* Témoignages Section - Unchanged */}
     <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{temoignagesTitle}</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{`Témoignages de nos Clients Satisfaits à ${currentCity.cityName}`}</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-                {cityTemoignages.map(testimonial => (
-                    <div class="bg-white p-8 rounded-2xl shadow-xl text-left">
-                        <p class="text-gray-700 font-semibold mb-2">"{testimonial.context}"</p>
-                        <p class="text-gray-600 italic mb-4">"{testimonial.quote}"</p>
-                        <p class="text-right font-medium text-gray-800">- {testimonial.author}</p>
-                    </div>
-                ))}
+                <div class="bg-white p-8 rounded-2xl shadow-xl text-left">
+                    <p class="text-gray-700 font-semibold mb-2">"Intervention remarquable en urgence"</p>
+                    <p class="text-gray-600 italic mb-4">{`Panne électrique totale un dimanche soir à ${currentCity.cityName}. L'électricien d'Elec Express est arrivé en 1h30, a trouvé le problème rapidement et tout est rentré dans l'ordre. Service impeccable et tarif honnête !`}</p>
+                    <p class="text-right font-medium text-gray-800">- {`Sophie Delcroix, ${currentCity.cityName}`}</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl text-left">
+                    <p class="text-gray-700 font-semibold mb-2">"Rénovation électrique complète parfaite"</p>
+                    <p class="text-gray-600 italic mb-4">{`Nous avons confié la rénovation électrique complète de notre maison ancienne à ${currentCity.cityName} à Elec Express. Travail soigné, respect des délais, conseils précieux et conformité RGIE obtenue du premier coup. Hautement recommandé !`}</p>
+                    <p class="text-right font-medium text-gray-800">- {`Marc et Isabelle Laurent, ${currentCity.cityName}`}</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl text-left">
+                    <p class="text-gray-700 font-semibold mb-2">"Installation borne de recharge impeccable"</p>
+                    <p class="text-gray-600 italic mb-4">{`Installation rapide et professionnelle de notre borne de recharge à ${currentCity.cityName}. Devis clair, travail propre et explications détaillées du fonctionnement. Parfait pour notre Tesla !`}</p>
+                    <p class="text-right font-medium text-gray-800">- {`Famille Dubois, ${currentCity.cityName}`}</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl text-left">
+                    <p class="text-gray-700 font-semibold mb-2">"Mise aux normes efficace"</p>
+                    <p class="text-gray-600 italic mb-4">{`Installation électrique des années 80 à mettre aux normes pour la vente. Elec Express a géré tout le processus, du diagnostic à la certification. Travail irréprochable et délais respectés.`}</p>
+                    <p class="text-right font-medium text-gray-800">- {`Jean-Pierre Moreau, ${currentCity.cityName}`}</p>
+                </div>
             </div>
         </div>
     </section>
 
-    {/* Questions Fréquentes Section - Unchanged */}
     <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6 max-w-3xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{faqTitle}</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{`Questions Fréquentes - Électricien à ${currentCity.cityName}`}</h2>
             <div class="space-y-6">
-                {cityFaqItems.map((item, index) => (
-                    <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group" open={index === 0}>
-                        <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
-                            <span>{item.q}</span>
-                            <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </span>
-                        </summary>
-                        <p class="text-gray-600 mt-3 leading-relaxed">{item.a}</p>
-                    </details>
-                ))}
+                <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group" open={true}>
+                    <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
+                        <span>{`Quels sont vos délais d'intervention pour une urgence électrique à ${currentCity.cityName} ?`}</span>
+                        <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">{`Pour les urgences à ${currentCity.cityName}, nous intervenons généralement en moins de 2 heures, 24h/24 et 7j/7. Nos équipes locales permettent une réactivité optimale même les week-ends et jours fériés.`}</p>
+                </details>
+                <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group">
+                    <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
+                        <span>{`Proposez-vous des devis gratuits pour les travaux électriques à ${currentCity.cityName} ?`}</span>
+                        <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">{`Oui, nous offrons des devis gratuits, détaillés et sans engagement pour tous les projets d'installation, rénovation ou mise en conformité à ${currentCity.cityName}. Estimation sur place ou à distance selon la nature des travaux.`}</p>
+                </details>
+                <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group">
+                    <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
+                        <span>{`Êtes-vous agréé pour réaliser une mise en conformité RGIE à ${currentCity.cityName} ?`}</span>
+                        <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">{`Absolument. Nos électriciens sont certifiés et agréés pour effectuer les mises aux normes RGIE. Nous vous accompagnons jusqu'à l'obtention de votre certificat de conformité à ${currentCity.cityName}.`}</p>
+                </details>
+                <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group">
+                    <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
+                        <span>{`Intervenez-vous aussi le week-end et les jours fériés à ${currentCity.cityName} ?`}</span>
+                        <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">{`Oui, nous assurons un service de dépannage 7j/7, y compris le week-end et les jours fériés pour les urgences électriques à ${currentCity.cityName}. Tarifs majorés appliqués selon les horaires.`}</p>
+                </details>
+                <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group">
+                    <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
+                        <span>{`Quelles garanties offrez-vous sur vos travaux à ${currentCity.cityName} ?`}</span>
+                        <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">{`Nous garantissons tous nos travaux électriques : 2 ans sur la main d'œuvre et selon garantie constructeur sur le matériel. Assurance décennale pour les gros travaux et responsabilité civile professionnelle.`}</p>
+                </details>
+                <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group">
+                    <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
+                        <span>{`Acceptez-vous les paiements échelonnés pour les gros travaux ?`}</span>
+                        <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">{`Oui, nous proposons des facilités de paiement pour les projets importants à ${currentCity.cityName} : acompte à la commande, échéancier selon avancement des travaux, possibilité de paiement en plusieurs fois.`}</p>
+                </details>
             </div>
         </div>
     </section>
 
-    {/* City Sections List - Unchanged */}
     {currentCity.sections && currentCity.sections.length > 0 && (
         <section class="py-16 md:py-20 bg-white">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{citySectionsTitle}</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{`Nos zones d’intervention en ${currentCity.cityName}:`}</h2>
                 <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8">
                     {currentCity.sections.map(section => (
                         <a href={`/electricien-${currentCity.slug}/${section.slug}/`} class="block bg-white text-gray-700 px-4 py-2 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-100 hover:text-yellow-500 transition-all duration-200 text-sm">
@@ -256,21 +282,20 @@ const schemaMarkup = generateSchema(meta_title, meta_description, 7);
         </section>
     )}
 
-    {/* Final CTA Section - Unchanged (as per your provided code) */}
     <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6 text-center">
             <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl max-w-3xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{finalCtaTitle}</h2>
-                <p class="text-lg text-gray-700 mb-10">{finalCtaText}</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{`Contactez Elec Express à ${currentCity.cityName}`}</h2>
+                <p class="text-lg text-gray-700 mb-10">{`N'attendez plus pour résoudre vos problèmes électriques ou concrétiser vos projets à ${currentCity.cityName} ! Pour une intervention rapide, un service de qualité et des conseils d'expert, faites confiance à Elec Express.`}</p>
                 <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                     <a href={finalCtaButton2Link} 
-                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-lg">
-                        {finalCtaButton2Text}
-                    </a>
-                    <a href={finalCtaButton1Link} 
-                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-white hover:bg-yellow-700 text-lg">
-                        {finalCtaButton1Text}
-                    </a>
+                       <a href="tel:+32470424242" 
+                           class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-lg">
+                            {`Urgence 24h/7j : 0470/42.42.42`}
+                       </a>
+                       <a href="/contact/" 
+                           class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-white hover:bg-yellow-700 text-lg">
+                            {`Demandez votre Devis Gratuit à ${currentCity.cityName}`}
+                       </a>
                 </div>
             </div>
         </div>

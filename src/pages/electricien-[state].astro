@@ -12,98 +12,25 @@ export async function getStaticPaths() {
 
 const { currentProvince } = Astro.props;
 
-const h1Content = `Électricien en ${currentProvince.State} : Votre Réseau d'Experts Locaux`;
-const introParagraph1 = `Vous habitez en ${currentProvince.State} et recherchez un service d'électricité fiable et réactif ? Elec Express est votre référence pour tous les travaux et dépannages électriques dans l'ensemble de ${currentProvince.State}.`;
-const introParagraph2 = `Que vous soyez un particulier ou un professionnel, notre réseau d'électriciens qualifiés est à votre disposition. Nous couvrons l'ensemble des communes de ${currentProvince.State}, garantissant une expertise locale et une intervention rapide conforme aux normes RGIE belges.`;
-const provinceHeroImageUrl = `/homepage/hero-province.png`; 
-
-const prestations = {
-    title: `Nos Prestations Électriques dans tout ${currentProvince.State}`, // Adjusted "Toute la"
-    intro: `Elec Express offre une gamme complète de services pour répondre aux besoins spécifiques des habitants et entreprises de ${currentProvince.State} :`,
-    services: [
-        { name: "Dépannage Électrique d'Urgence 24h/7j", text: `Une urgence électrique où que vous soyez en ${currentProvince.State} ? Nos équipes mobiles interviennent rapidement dans toutes les communes pour résoudre vos pannes électriques : court-circuits, disjoncteurs qui sautent, pannes de courant ou tout autre dysfonctionnement. Service disponible 24h/24 et 7j/7, avec intervention garantie en moins de 2 heures.` },
-        { name: "Installations Électriques Complètes", text: `Pour vos projets de construction neuve ou de rénovation majeure en ${currentProvince.State}, nous prenons en charge l'intégralité de votre installation électrique, du tableau aux finitions. Nos électriciens conçoivent des installations sur mesure conformes aux normes RGIE, avec étude personnalisée et matériel de qualité garantie.` },
-        { name: "Mise en Conformité et Contrôle RGIE", text: `Assurez la sécurité de votre installation en ${currentProvince.State}. Nous réalisons les diagnostics complets et les travaux de mise aux normes électriques requis par la législation belge. Notre service inclut l'accompagnement lors du contrôle par un organisme agréé et la délivrance du certificat de conformité RGIE.` },
-        { name: "Solutions d'Éclairage LED et Domotique", text: `Optimisez votre confort et votre consommation d'énergie grâce à nos conseils et installations d'éclairage LED performant. Nous proposons également des systèmes domotiques intégrés pour moderniser votre habitat : contrôle intelligent du chauffage, éclairage, volets, sécurité et autres équipements connectés.` }
-    ],
-    specialisesTitle: "Services Spécialisés Supplémentaires",
-    specialises: [
-        "Rénovation électrique : Modernisation des installations vieillissantes",
-        "Parlophonie et vidéophonie : Systèmes de communication et contrôle d'accès",
-        "Tableaux électriques : Installation et mise à niveau des protections",
-        "Chauffage électrique : Installation et maintenance de systèmes de chauffage",
-        "Éclairage de sécurité : Solutions d'éclairage d'urgence et de balisage"
-    ]
-};
-
-const avantages = {
-    title: `Les Avantages d'Elec Express en ${currentProvince.State}`,
-    intro: `Choisir Elec Express pour vos besoins électriques en ${currentProvince.State}, c'est bénéficier de :`,
-    points: [
-        { name: "Couverture Provinciale Complète", text: `Nous intervenons dans toutes les villes et communes de ${currentProvince.State}, avec des équipes locales disponibles rapidement.` },
-        { name: "Expertise Certifiée", text: `Tous nos électriciens sont qualifiés, certifiés et connaissent parfaitement les spécificités régionales et les normes RGIE belges.` },
-        { name: "Réactivité Garantie", text: `Grâce à notre réseau étendu, nous assurons des délais d'intervention optimisés, même en cas d'urgence, partout dans ${currentProvince.State}.` }, // "la province" -> currentProvince.State
-        { name: "Transparence Tarifaire", text: `Devis clairs et détaillés avant toute intervention, sans frais cachés. Tarifs cohérents avec ajustement transparent selon la distance.` },
-        { name: "Qualité et Garantie", text: `Matériel de qualité supérieure, main d'œuvre experte et garantie sur tous nos travaux électriques.` },
-        { name: "Service Client Personnalisé", text: `Conseil technique gratuit, suivi de chantier et assistance après-vente pour tous vos projets.` }
-    ]
-};
-
-const villesCommunes = {
-    title: `Villes et Communes Desservies en ${currentProvince.State}`,
-    intro: `Notre réseau d'électriciens couvre activement l'ensemble de ${currentProvince.State}, incluant notamment les villes et communes principales. Chaque localité bénéficie du même niveau de service professionnel et de la même réactivité.`,
-    outro: `Contactez-nous pour confirmer notre intervention dans votre localité spécifique en ${currentProvince.State}.`
-};
-
-const temoignages = {
-    title: "Témoignages de Clients Satisfaits", // Kept generic, context within item adds province
-    items: [
-        { quote: "Panne électrique un dimanche soir, l'équipe d'Elec Express est intervenue en moins d'une heure. Diagnostic précis, réparation efficace et tarif honnête. Je recommande vivement leurs services.", author: "Jean Dubois", context: `Service de dépannage exceptionnel en ${currentProvince.State}`},
-        { quote: "Elec Express a réalisé l'installation électrique complète de nos nouveaux bureaux. Travail impeccable, respect des délais et conformité RGIE parfaite. Très satisfaits du professionnalisme.", author: "SPRL TechnoServices", context: "Installation complète pour notre entreprise"}, // This context is generic, ok
-        { quote: "Installation vétuste qui nécessitait une mise aux normes. L'équipe a été de très bon conseil, travail soigné et certification obtenue sans problème. Merci pour ce service de qualité.", author: "Marie Lemoine", context: "Mise en conformité rapide et efficace"} // This context is generic, ok
-    ]
-};
-
-const faq = {
-    title: `Questions Fréquentes - Électricité en ${currentProvince.State}`,
-    items: [
-        { q: `Quels sont les délais d'intervention en ${currentProvince.State} ?`, a: `Pour les urgences, nous intervenons dans les 2 heures partout en ${currentProvince.State}. Pour les travaux programmés, les délais varient selon la complexité du projet, mais nous nous engageons sur des plannings précis.` },
-        { q: `Les tarifs sont-ils identiques dans tout ${currentProvince.State} ?`, a: `Nos tarifs de base sont uniformes dans tout ${currentProvince.State}. Seuls de légers frais de déplacement peuvent s'appliquer selon la distance. Chaque devis détaille clairement tous les coûts.` }, // Adjusted "toute la"
-        { q: `Intervenez-vous pour les entreprises et professionnels ?`, a: `Absolument. Nous proposons nos services aux particuliers, entreprises, commerces, PME et administrations dans tout ${currentProvince.State}. Devis spécialisés et solutions adaptées à chaque secteur d'activité.` }, // Adjusted "toute la"
-        { q: `Proposez-vous des contrats de maintenance ?`, a: `Oui, nous offrons des contrats de maintenance préventive pour les installations électriques importantes, permettant d'éviter les pannes et de garantir la conformité continue de vos équipements.` },
-        { q: `Comment obtenir un certificat de conformité RGIE ?`, a: `Nous réalisons le diagnostic, effectuons les travaux de mise en conformité nécessaires et vous accompagnons lors du contrôle par l'organisme agréé. Processus complet pris en charge par nos équipes.` }
-    ]
-};
-
-const finalCta = { 
-    title: `Contactez Elec Express pour ${currentProvince.State}`,
-    text: `Pour tous vos besoins en électricité dans ${currentProvince.State}, faites appel à l'expertise locale d'Elec Express. Intervention rapide, travail soigné et tarifs transparents garantis.`,
-    button1Text: "Obtenir un Devis Gratuit",
-    button1Link: "/contact/",
-    button2Text: `Urgence 24h/7j : 0470/42.42.42`,
-    button2Link: "tel:+32470424242"
-};
-
 const meta_title = `Électricien ${currentProvince.State} ⭐ Elec Express`;
 const meta_description = `Trouvez votre électricien de confiance dans la ${currentProvince.State}. Elec Express intervient pour dépannage, installation et mise aux normes. Devis rapide ☎️ 0470/42.42.42.`;
-
 const schemaMarkup = generateSchema(meta_title, meta_description, 5);
 ---
 
 <Layout meta_title={meta_title} meta_description={meta_description} schemaMarkup={schemaMarkup} >
     <section 
         class="relative bg-cover bg-center text-white"
-        style={`background-image: url('${provinceHeroImageUrl}');`}
+        style="background-image: url('/homepage/hero-province.png');"
         role="img"
-        aria-label=`Électricien ${currentProvince.State}`
+        aria-label={`Électricien ${currentProvince.State}`}
     >
         <div class="absolute inset-0 bg-blue-900 opacity-60"></div>
         <div class="container mx-auto px-6 text-center py-20 md:py-32 relative z-10">
             <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6">
-                {h1Content}
+                {`Électricien en ${currentProvince.State} : Votre Réseau d'Experts Locaux`}
             </h1>
             <p class="text-lg md:text-xl text-gray-100 mb-8 max-w-3xl mx-auto">
-                {introParagraph1}
+                {`Vous habitez en ${currentProvince.State} et recherchez un service d'électricité fiable et réactif ? Elec Express est votre référence pour tous les travaux et dépannages électriques dans l'ensemble de ${currentProvince.State}.`}
             </p>
             <div class="flex justify-center items-center mb-8">
                 <a href="tel:+32470424242" 
@@ -112,64 +39,91 @@ const schemaMarkup = generateSchema(meta_title, meta_description, 5);
                 </a>
             </div>
             <p class="text-lg md:text-xl text-gray-100 max-w-3xl mx-auto">
-                {introParagraph2}
+                {`Que vous soyez un particulier ou un professionnel, notre réseau d'électriciens qualifiés est à votre disposition. Nous couvrons l'ensemble des communes de ${currentProvince.State}, garantissant une expertise locale et une intervention rapide conforme aux normes RGIE belges.`}
             </p>
         </div>
     </section>
 
-    {/* Prestations Section - No structural or styling changes from last version */}
     <section class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{prestations.title}</h2>
-            <p class="text-lg text-gray-700 text-center mb-10 max-w-3xl mx-auto">{prestations.intro}</p>
-            {/* --- START: Added Image --- */}
-                <div class="mb-12 text-center"> {/* Added margin-bottom and text-center for centering */}
-                    <img 
-                        src= "/homepage/installation-electrique-complete.png"
-                        alt={`Nos Prestations Électriques dans tout ${currentProvince.State}`}
-                        class="mx-auto rounded-lg shadow-lg max-h-80 w-auto object-contain" 
-                        loading="lazy"
-                    /> {/* max-h-80 for height control, adjust as needed. object-contain to maintain aspect ratio */}
-                </div>
-            {/* --- END: Added Image --- */}
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{`Nos Prestations Électriques dans tout ${currentProvince.State}`}</h2>
+            <p class="text-lg text-gray-700 text-center mb-10 max-w-3xl mx-auto">{`Elec Express offre une gamme complète de services pour répondre aux besoins spécifiques des habitants et entreprises de ${currentProvince.State} :`}</p>
+            <div class="mb-12 text-center">
+                <img 
+                    src="/homepage/installation-electrique-complete.png"
+                    alt={`Nos Prestations Électriques dans tout ${currentProvince.State}`}
+                    class="mx-auto rounded-lg shadow-lg max-h-80 w-auto object-contain" 
+                    loading="lazy"
+                />
+            </div>
             <div class="grid md:grid-cols-2 gap-x-8 gap-y-10 mb-12">
-                {prestations.services.map(service => (
-                    <div class="bg-white p-6 rounded-2xl shadow-xl">
-                        <h3 class="text-xl font-semibold text-yellow-700 mb-3">{service.name}</h3>
-                        <p class="text-gray-600 leading-relaxed">{service.text}</p>
-                    </div>
-                ))}
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Dépannage Électrique d'Urgence 24h/7j</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Une urgence électrique où que vous soyez en ${currentProvince.State} ? Nos équipes mobiles interviennent rapidement dans toutes les communes pour résoudre vos pannes électriques : court-circuits, disjoncteurs qui sautent, pannes de courant ou tout autre dysfonctionnement. Service disponible 24h/24 et 7j/7, avec intervention garantie en moins de 2 heures.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Installations Électriques Complètes</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Pour vos projets de construction neuve ou de rénovation majeure en ${currentProvince.State}, nous prenons en charge l'intégralité de votre installation électrique, du tableau aux finitions. Nos électriciens conçoivent des installations sur mesure conformes aux normes RGIE, avec étude personnalisée et matériel de qualité garantie.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Mise en Conformité et Contrôle RGIE</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Assurez la sécurité de votre installation en ${currentProvince.State}. Nous réalisons les diagnostics complets et les travaux de mise aux normes électriques requis par la législation belge. Notre service inclut l'accompagnement lors du contrôle par un organisme agréé et la délivrance du certificat de conformité RGIE.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Solutions d'Éclairage LED et Domotique</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Optimisez votre confort et votre consommation d'énergie grâce à nos conseils et installations d'éclairage LED performant. Nous proposons également des systèmes domotiques intégrés pour moderniser votre habitat : contrôle intelligent du chauffage, éclairage, volets, sécurité et autres équipements connectés.`}</p>
+                </div>
             </div>
             <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl">
-                <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center md:text-left">{prestations.specialisesTitle}</h3>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center md:text-left">Services Spécialisés Supplémentaires</h3>
                 <ul class="list-disc list-inside text-gray-600 space-y-2 columns-1 md:columns-2 sm:text-base text-sm">
-                    {prestations.specialises.map(item => <li>{item}</li>)}
+                    <li>Rénovation électrique : Modernisation des installations vieillissantes</li>
+                    <li>Parlophonie et vidéophonie : Systèmes de communication et contrôle d'accès</li>
+                    <li>Tableaux électriques : Installation et mise à niveau des protections</li>
+                    <li>Chauffage électrique : Installation et maintenance de systèmes de chauffage</li>
+                    <li>Éclairage de sécurité : Solutions d'éclairage d'urgence et de balisage</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    {/* Avantages Section - No structural or styling changes from last version */}
     <section class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{avantages.title}</h2>
-            <p class="text-lg text-gray-700 text-center mb-10 max-w-3xl mx-auto">{avantages.intro}</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{`Les Avantages d'Elec Express en ${currentProvince.State}`}</h2>
+            <p class="text-lg text-gray-700 text-center mb-10 max-w-3xl mx-auto">{`Choisir Elec Express pour vos besoins électriques en ${currentProvince.State}, c'est bénéficier de :`}</p>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {avantages.points.map(point => (
-                    <div class="bg-white p-6 rounded-2xl shadow-xl">
-                        <h3 class="text-xl font-semibold text-yellow-700 mb-2">{point.name}</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">{point.text}</p>
-                    </div>
-                ))}
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Couverture Provinciale Complète</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{`Nous intervenons dans toutes les villes et communes de ${currentProvince.State}, avec des équipes locales disponibles rapidement.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Expertise Certifiée</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{`Tous nos électriciens sont qualifiés, certifiés et connaissent parfaitement les spécificités régionales et les normes RGIE belges.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Réactivité Garantie</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{`Grâce à notre réseau étendu, nous assurons des délais d'intervention optimisés, même en cas d'urgence, partout dans ${currentProvince.State}.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Transparence Tarifaire</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{`Devis clairs et détaillés avant toute intervention, sans frais cachés. Tarifs cohérents avec ajustement transparent selon la distance.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Qualité et Garantie</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{`Matériel de qualité supérieure, main d'œuvre experte et garantie sur tous nos travaux électriques.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Service Client Personnalisé</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{`Conseil technique gratuit, suivi de chantier et assistance après-vente pour tous vos projets.`}</p>
+                </div>
             </div>
         </div>
     </section>
 
-    {/* Villes et Communes Desservies Section - No structural or styling changes from last version */}
     <section class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{villesCommunes.title}</h2>
-            <p class="text-lg text-gray-700 text-center mb-10 max-w-3xl mx-auto">{villesCommunes.intro}</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{`Villes et Communes Desservies en ${currentProvince.State}`}</h2>
+            <p class="text-lg text-gray-700 text-center mb-10 max-w-3xl mx-auto">{`Notre réseau d'électriciens couvre activement l'ensemble de ${currentProvince.State}, incluant notamment les villes et communes principales. Chaque localité bénéficie du même niveau de service professionnel et de la même réactivité.`}</p>
             {currentProvince.Cities && currentProvince.Cities.length > 0 ? (
                 <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8">
                     {currentProvince.Cities.slice(0, 20).map(city => (
@@ -184,63 +138,110 @@ const schemaMarkup = generateSchema(meta_title, meta_description, 5);
             ) : (
                 <p class="text-center text-gray-600">La liste des villes pour cette province sera bientôt disponible.</p>
             )}
-            <p class="text-center text-gray-600">{villesCommunes.outro}</p>
+            <p class="text-center text-gray-600">{`Contactez-nous pour confirmer notre intervention dans votre localité spécifique en ${currentProvince.State}.`}</p>
         </div>
     </section>
 
-    {/* Témoignages Section - No structural or styling changes from last version */}
     <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{temoignages.title}</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">Témoignages de Clients Satisfaits</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                {temoignages.items.map(testimonial => (
-                    <div class="bg-white p-8 rounded-2xl shadow-xl text-center md:text-left">
-                        <p class="text-gray-700 font-semibold mb-2">"{testimonial.context}"</p>
-                        <p class="text-gray-600 italic mb-4">"{testimonial.quote}"</p>
-                        <p class="text-right font-medium text-gray-800">- {testimonial.author}</p>
-                    </div>
-                ))}
+                <div class="bg-white p-8 rounded-2xl shadow-xl text-center md:text-left">
+                    <p class="text-gray-700 font-semibold mb-2">"{`Service de dépannage exceptionnel en ${currentProvince.State}`}"</p>
+                    <p class="text-gray-600 italic mb-4">"Panne électrique un dimanche soir, l'équipe d'Elec Express est intervenue en moins d'une heure. Diagnostic précis, réparation efficace et tarif honnête. Je recommande vivement leurs services."</p>
+                    <p class="text-right font-medium text-gray-800">- Jean Dubois</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl text-center md:text-left">
+                    <p class="text-gray-700 font-semibold mb-2">"Installation complète pour notre entreprise"</p>
+                    <p class="text-gray-600 italic mb-4">"Elec Express a réalisé l'installation électrique complète de nos nouveaux bureaux. Travail impeccable, respect des délais et conformité RGIE parfaite. Très satisfaits du professionnalisme."</p>
+                    <p class="text-right font-medium text-gray-800">- SPRL TechnoServices</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl text-center md:text-left">
+                    <p class="text-gray-700 font-semibold mb-2">"Mise en conformité rapide et efficace"</p>
+                    <p class="text-gray-600 italic mb-4">"Installation vétuste qui nécessitait une mise aux normes. L'équipe a été de très bon conseil, travail soigné et certification obtenue sans problème. Merci pour ce service de qualité."</p>
+                    <p class="text-right font-medium text-gray-800">- Marie Lemoine</p>
+                </div>
             </div>
         </div>
     </section>
 
-    {/* Questions Fréquentes Section - No structural or styling changes from last version */}
     <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6 max-w-3xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{faq.title}</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{`Questions Fréquentes - Électricité en ${currentProvince.State}`}</h2>
             <div class="space-y-6">
-                {faq.items.map((item, index) => (
-                    <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group" open={index === 0}>
-                        <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
-                            <span>{item.q}</span>
-                            <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </span>
-                        </summary>
-                        <p class="text-gray-600 mt-3 leading-relaxed">{item.a}</p>
-                    </details>
-                ))}
+                <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group" open={true}>
+                    <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
+                        <span>{`Quels sont les délais d'intervention en ${currentProvince.State} ?`}</span>
+                        <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">{`Pour les urgences, nous intervenons dans les 2 heures partout en ${currentProvince.State}. Pour les travaux programmés, les délais varient selon la complexité du projet, mais nous nous engageons sur des plannings précis.`}</p>
+                </details>
+                <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group">
+                    <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
+                        <span>{`Les tarifs sont-ils identiques dans tout ${currentProvince.State} ?`}</span>
+                        <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">{`Nos tarifs de base sont uniformes dans tout ${currentProvince.State}. Seuls de légers frais de déplacement peuvent s'appliquer selon la distance. Chaque devis détaille clairement tous les coûts.`}</p>
+                </details>
+                <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group">
+                    <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
+                        <span>{`Intervenez-vous pour les entreprises et professionnels ?`}</span>
+                        <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">{`Absolument. Nous proposons nos services aux particuliers, entreprises, commerces, PME et administrations dans tout ${currentProvince.State}. Devis spécialisés et solutions adaptées à chaque secteur d'activité.`}</p>
+                </details>
+                <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group">
+                    <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
+                        <span>{`Proposez-vous des contrats de maintenance ?`}</span>
+                        <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">{`Oui, nous offrons des contrats de maintenance préventive pour les installations électriques importantes, permettant d'éviter les pannes et de garantir la conformité continue de vos équipements.`}</p>
+                </details>
+                <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group">
+                    <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
+                        <span>{`Comment obtenir un certificat de conformité RGIE ?`}</span>
+                        <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">{`Nous réalisons le diagnostic, effectuons les travaux de mise en conformité nécessaires et vous accompagnons lors du contrôle par l'organisme agréé. Processus complet pris en charge par nos équipes.`}</p>
+                </details>
             </div>
         </div>
     </section>
 
-    {/* Final CTA Section - Remains as per your provided code (with two buttons) */}
     <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6 text-center">
             <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl max-w-3xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{finalCta.title}</h2>
-                <p class="text-lg text-gray-700 mb-10">{finalCta.text}</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{`Contactez Elec Express pour ${currentProvince.State}`}</h2>
+                <p class="text-lg text-gray-700 mb-10">{`Pour tous vos besoins en électricité dans ${currentProvince.State}, faites appel à l'expertise locale d'Elec Express. Intervention rapide, travail soigné et tarifs transparents garantis.`}</p>
                 <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                     <a href={finalCta.button2Link} 
-                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-lg">
-                        {finalCta.button2Text}
-                    </a>
-                    <a href={finalCta.button1Link} 
-                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-white hover:bg-yellow-700 text-lg">
-                        {finalCta.button1Text}
-                    </a>
+                       <a href="tel:+32470424242" 
+                           class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-lg">
+                            {`Urgence 24h/7j : 0470/42.42.42`}
+                       </a>
+                       <a href="/contact/" 
+                           class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-white hover:bg-yellow-700 text-lg">
+                            Obtenir un Devis Gratuit
+                       </a>
                 </div>
             </div>
         </div>

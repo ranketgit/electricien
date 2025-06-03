@@ -1,6 +1,6 @@
 ---
-import Layout from '../../layouts/Layout.astro'; // Using your import path
-import { data as locationsData } from '../../data/locations.ts'; // Using your import path
+import Layout from '../../layouts/Layout.astro'; 
+import { data as locationsData } from '../../data/locations.ts'; 
 import { generateSchema } from "../../seo/schema";
 
 export async function getStaticPaths() {
@@ -26,62 +26,6 @@ export async function getStaticPaths() {
 
 const { currentSection, currentCity, currentProvinceName } = Astro.props;
 
-
-const sectionHeroImageUrl = `/homepage/electrician-state.avif`; // Using your image path - ensure it's suitable for a background
-const h1Content = `Électricien ${currentSection.name}, ${currentCity.cityName} : Votre Expert de Proximité`;
-const heroIntroP1 = `Vous habitez ou travaillez dans le quartier de ${currentSection.name} à ${currentCity.cityName} et avez besoin d'un électricien local fiable ? Une panne électrique soudaine dans votre logement ou commerce à ${currentSection.name} ? Elec Express est votre spécialiste de l'électricité intervenant spécifiquement dans le quartier de ${currentSection.name}, au cœur de ${currentCity.cityName}.`;
-const heroIntroP2 = `Notre équipe connaît parfaitement ${currentSection.name} et ses environs, offrant des dépannages rapides et solutions électriques sur mesure.`;
-
-// --- UNCHANGED FRONTMATTER SECTIONS BELOW THIS LINE (Services, Avantages, etc. as you provided) ---
-const servicesTitle = `Services Électriques Dédiés au Quartier ${currentSection.name}`;
-const servicesIntro = `Nous proposons l'ensemble de nos services d'électricité avec une attention particulière pour les résidents et professionnels du quartier ${currentSection.name} à ${currentCity.cityName} :`;
-const sectionServices = [
-    { title: `Dépannage Ultra-Rapide à ${currentSection.name}`, text: `Grâce à notre connaissance du quartier ${currentSection.name}, nous intervenons en un temps record. En cas d'urgence électrique à ${currentSection.name}, notre priorité est d'être chez vous au plus vite pour toute panne, court-circuit ou problème électrique.` },
-    { title: `Installations et Rénovations Électriques à ${currentSection.name}`, text: `Que ce soit pour un appartement, une maison ou un local commercial dans le quartier ${currentSection.name}, nous réalisons vos installations (tableau, prises, éclairage) dans les règles de l'art.` },
-    { title: `Mise en Conformité Spécifique à ${currentSection.name}`, text: `Nous vous accompagnons pour la mise aux normes de votre installation électrique dans le quartier ${currentSection.name}.` },
-    { title: `Solutions d'Éclairage pour ${currentSection.name}`, text: `Mettez en valeur votre bien à ${currentSection.name} avec nos installations d'éclairage intérieur et extérieur.` },
-    { title: `Parlophonie, Vidéophonie et Domotique à ${currentSection.name}`, text: `Renforcez la sécurité et le confort de votre domicile dans le quartier ${currentSection.name} grâce à nos solutions connectées.` }
-];
-
-const avantagesTitle = `L'Avantage d'un Électricien dans Votre Quartier ${currentSection.name}`;
-const avantagesIntro = `Choisir un électricien qui connaît bien ${currentSection.name} vous apporte des bénéfices concrets :`;
-const sectionAvantages = [
-    { title: "Intervention Express", text: `Notre base ou nos tournées fréquentes dans ${currentCity.cityName} nous permettent d'être extrêmement réactifs dans le quartier ${currentSection.name}. Fini les longues attentes !` },
-    { title: "Compréhension Locale", text: `Nous sommes familiers avec les types de bâtiments et d'installations courantes à ${currentSection.name}.` },
-    { title: "Flexibilité Accrue", text: `Planifier un rendez-vous à ${currentSection.name} est plus simple grâce à notre présence locale.` },
-    { title: "Un Voisin de Confiance", text: `Nous tissons des liens durables avec les habitants et commerçants de ${currentSection.name}.` }
-];
-
-const tarifsTitle = `Tarifs pour une Intervention à ${currentSection.name}, ${currentCity.cityName}`;
-const tarifsIntro = `Nos tarifs pour le quartier ${currentSection.name} sont alignés sur ceux de ${currentCity.cityName}. Voici quelques indications (susceptibles de varier) :`;
-const sectionTarifsList = [
-    `Dépannage Urgent à ${currentSection.name} (jour) : à partir de 150 €`,
-    `Installation Prise Électrique (quartier ${currentSection.name}) : 150 € - 300 €`,
-    `Devis Mise en Conformité (appartement type à ${currentSection.name}) : Estimation gratuite`
-];
-const tarifsOutro = `Demandez un devis précis pour votre besoin spécifique dans le quartier ${currentSection.name}.`;
-
-const temoignagesTitle = `Ils Nous Ont Fait Confiance à ${currentSection.name}`;
-const sectionTemoignages = [
-    { quote: `Enfin un électricien qui intervient vite dans le quartier ${currentSection.name} ! Problème de disjoncteur résolu en 30 minutes. Top !`, author: `Ahmed K., ${currentSection.name}, ${currentCity.cityName}` },
-    { quote: `Installation de nouvelles prises dans notre bureau à ${currentSection.name}. Travail propre et rapide par Elec Express. Je recommande pour les pros du quartier.`, author: `Société Innovatech, ${currentSection.name}` },
-    { quote: `Très content du service pour la mise en conformité de mon appartement à ${currentSection.name}. L'électricien de Elec Express a été clair et pédagogue.`, author: `Chloé M., ${currentSection.name}, ${currentCity.cityName}` }
-];
-
-const faqTitle = `FAQ – Électricien Quartier ${currentSection.name}`;
-const sectionFaqItems = [
-    { q: `Couvrez-vous vraiment tout le quartier de ${currentSection.name} ?`, a: `Oui, nos équipes interviennent régulièrement et sans exception dans l'ensemble du quartier ${currentSection.name} à ${currentCity.cityName}.` },
-    { q: `Y a-t-il des frais de déplacement supplémentaires pour ${currentSection.name} ?`, a: `Non, pour les interventions dans le quartier ${currentSection.name}, nos frais de déplacement sont inclus dans nos forfaits standards pour ${currentCity.cityName}.` },
-    { q: `Quel est le meilleur moment pour vous contacter depuis ${currentSection.name} ?`, a: `Pour les urgences à ${currentSection.name}, nous sommes joignables 24/7. Pour les projets, contactez-nous durant les heures de bureau pour un devis rapide.` }
-];
-
-const finalCtaHeading = "Contactez-nous !";
-const finalCtaText = `Habitants et professionnels du quartier ${currentSection.name}, ne cherchez plus votre électricien !`;
-const finalCtaButton1Text = `Devis Gratuit pour ${currentSection.name}`;
-const finalCtaButton1Link = "/contact/";
-const finalCtaButton2Text = `Appelez votre expert local au 0470/42.42.42`;
-const finalCtaButton2Link = "tel:+32470424242";
-
 const meta_title = `Électricien ${currentSection.name} ⚡ Elec Express`;
 const meta_description = `Votre électricien de proximité à ${currentSection.name} - ${currentCity.cityName} ⚡ Intervention rapide pour pannes, installations et mises aux normes. Contactez Elec Express ☎️ 0470/42.42.42 !`;
 const schemaMarkup = generateSchema(meta_title, meta_description, 7);
@@ -90,137 +34,181 @@ const schemaMarkup = generateSchema(meta_title, meta_description, 7);
 <Layout meta_title={meta_title} meta_description={meta_description} schemaMarkup={schemaMarkup} >
     <section 
         class="relative bg-cover bg-center text-white"
-        style={`background-image: url('${sectionHeroImageUrl}');`}
+        style="background-image: url('/homepage/electrician-state.avif');"
     >
         <div class="absolute inset-0 bg-blue-900 opacity-60"></div>
         
         <div class="container mx-auto px-6 text-center py-20 md:py-32 relative z-10">
             <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6">
-                {h1Content}
+                {`Électricien ${currentSection.name}, ${currentCity.cityName} : Votre Expert de Proximité`}
             </h1>
-            <p class="text-lg md:text-xl text-gray-100 mb-8 max-w-3xl mx-auto"> {/* mb-8 for space before button */}
-                {heroIntroP1}
+            <p class="text-lg md:text-xl text-gray-100 mb-8 max-w-3xl mx-auto">
+                {`Vous habitez ou travaillez dans le quartier de ${currentSection.name} à ${currentCity.cityName} et avez besoin d'un électricien local fiable ? Une panne électrique soudaine dans votre logement ou commerce à ${currentSection.name} ? Elec Express est votre spécialiste de l'électricité intervenant spécifiquement dans le quartier de ${currentSection.name}, au cœur de ${currentCity.cityName}.`}
             </p>
-            {/* ADDED SINGLE SOLID BUTTON TO HERO - Placed under the first paragraph */}
-            <div class="flex justify-center items-center mb-8"> {/* mb-8 for space after button */}
+            <div class="flex justify-center items-center mb-8"> 
                 <a href="tel:+32470424242" 
                    class="w-full sm:w-auto px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-black hover:bg-yellow-600 text-lg">
                     0470/42.42.42
                 </a>
             </div>
             <p class="text-lg md:text-xl text-gray-100 max-w-3xl mx-auto">
-                {heroIntroP2}
+                {`Notre équipe connaît parfaitement ${currentSection.name} et ses environs, offrant des dépannages rapides et solutions électriques sur mesure.`}
             </p>
         </div>
-        {/* The separate image div that was here (in your provided code) is removed */}
     </section>
 
-    {/* Services Dédiés Section - Styling remains as per your last preference (white cards with shadow) */}
     <section class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{servicesTitle}</h2>
-            <p class="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">{servicesIntro}</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{`Services Électriques Dédiés au Quartier ${currentSection.name}`}</h2>
+            <p class="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">{`Nous proposons l'ensemble de nos services d'électricité avec une attention particulière pour les résidents et professionnels du quartier ${currentSection.name} à ${currentCity.cityName} :`}</p>
             <div class="mb-12 text-center">
                 <img 
-                    src= "/homepage/electrician-hero-city.avif"
+                    src="/homepage/electrician-hero-city.avif"
                     alt={`Nos Services d'Électricité à ${currentSection.name}`}
                     class="mx-auto rounded-lg shadow-lg max-h-80 w-auto object-contain" 
                     loading="lazy"
                 /> 
             </div>
-            <div class="space-y-8 md:space-y-0 md:grid md:grid-cols-1 lg:grid-cols-2 md:gap-8"> {/* Made services a grid on md+ */}
-                {sectionServices.map(service => (
-                    <div class="bg-white p-6 rounded-2xl shadow-xl">
-                        <h3 class="text-xl font-semibold text-yellow-700 mb-3">{service.title}</h3>
-                        <p class="text-gray-600 leading-relaxed">{service.text}</p>
-                    </div>
-                ))}
+            <div class="space-y-8 md:space-y-0 md:grid md:grid-cols-1 lg:grid-cols-2 md:gap-8">
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">{`Dépannage Ultra-Rapide à ${currentSection.name}`}</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Grâce à notre connaissance du quartier ${currentSection.name}, nous intervenons en un temps record. En cas d'urgence électrique à ${currentSection.name}, notre priorité est d'être chez vous au plus vite pour toute panne, court-circuit ou problème électrique.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">{`Installations et Rénovations Électriques à ${currentSection.name}`}</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Que ce soit pour un appartement, une maison ou un local commercial dans le quartier ${currentSection.name}, nous réalisons vos installations (tableau, prises, éclairage) dans les règles de l'art.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">{`Mise en Conformité Spécifique à ${currentSection.name}`}</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Nous vous accompagnons pour la mise aux normes de votre installation électrique dans le quartier ${currentSection.name}.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">{`Solutions d'Éclairage pour ${currentSection.name}`}</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Mettez en valeur votre bien à ${currentSection.name} avec nos installations d'éclairage intérieur et extérieur.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">{`Parlophonie, Vidéophonie et Domotique à ${currentSection.name}`}</h3>
+                    <p class="text-gray-600 leading-relaxed">{`Renforcez la sécurité et le confort de votre domicile dans le quartier ${currentSection.name} grâce à nos solutions connectées.`}</p>
+                </div>
             </div>
         </div>
     </section>
 
-    {/* Avantages Quartier Section - Styling remains as per your last preference */}
     <section class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{avantagesTitle}</h2>
-            <p class="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">{avantagesIntro}</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{`L'Avantage d'un Électricien dans Votre Quartier ${currentSection.name}`}</h2>
+            <p class="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">{`Choisir un électricien qui connaît bien ${currentSection.name} vous apporte des bénéfices concrets :`}</p>
             <div class="grid md:grid-cols-2 gap-8">
-                {sectionAvantages.map(avantage => (
-                    <div class="bg-white p-6 rounded-2xl shadow-xl h-full">
-                        <h3 class="text-xl font-semibold text-yellow-700 mb-2">{avantage.title}</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">{avantage.text}</p>
-                    </div>
-                ))}
+                <div class="bg-white p-6 rounded-2xl shadow-xl h-full">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Intervention Express</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{`Notre base ou nos tournées fréquentes dans ${currentCity.cityName} nous permettent d'être extrêmement réactifs dans le quartier ${currentSection.name}. Fini les longues attentes !`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl h-full">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Compréhension Locale</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{`Nous sommes familiers avec les types de bâtiments et d'installations courantes à ${currentSection.name}.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl h-full">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Flexibilité Accrue</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{`Planifier un rendez-vous à ${currentSection.name} est plus simple grâce à notre présence locale.`}</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-xl h-full">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Un Voisin de Confiance</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{`Nous tissons des liens durables avec les habitants et commerçants de ${currentSection.name}.`}</p>
+                </div>
             </div>
         </div>
     </section>
 
-    {/* Tarifs Section - Styling remains as per your last preference */}
     <section class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-6 max-w-3xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{tarifsTitle}</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">{`Tarifs pour une Intervention à ${currentSection.name}, ${currentCity.cityName}`}</h2>
             <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl">
-                <p class="text-gray-700 mb-6 leading-relaxed">{tarifsIntro}</p>
+                <p class="text-gray-700 mb-6 leading-relaxed">{`Nos tarifs pour le quartier ${currentSection.name} sont alignés sur ceux de ${currentCity.cityName}. Voici quelques indications (susceptibles de varier) :`}</p>
                 <ul class="list-disc list-inside text-gray-600 space-y-2 mb-6">
-                    {sectionTarifsList.map(item => <li>{item}</li>)}
+                    <li>{`Dépannage Urgent à ${currentSection.name} (jour) : à partir de 150 €`}</li>
+                    <li>{`Installation Prise Électrique (quartier ${currentSection.name}) : 150 € - 300 €`}</li>
+                    <li>{`Devis Mise en Conformité (appartement type à ${currentSection.name}) : Estimation gratuite`}</li>
                 </ul>
-                <p class="text-gray-700 font-medium italic">{tarifsOutro}</p>
+                <p class="text-gray-700 font-medium italic">{`Demandez un devis précis pour votre besoin spécifique dans le quartier ${currentSection.name}.`}</p>
             </div>
         </div>
     </section>
 
-    {/* Témoignages Section - Styling remains as per your last preference */}
     <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{temoignagesTitle}</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{`Ils Nous Ont Fait Confiance à ${currentSection.name}`}</h2>
             <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
-                {sectionTemoignages.map(testimonial => (
-                    <div class="bg-white p-8 rounded-2xl shadow-xl text-left flex flex-col h-full">
-                        <p class="text-gray-600 italic mb-4 flex-grow">"{testimonial.quote}"</p>
-                        <p class="text-right font-medium text-gray-800 mt-auto">- {testimonial.author}</p>
-                    </div>
-                ))}
+                <div class="bg-white p-8 rounded-2xl shadow-xl text-left flex flex-col h-full">
+                    <p class="text-gray-600 italic mb-4 flex-grow">"{`Enfin un électricien qui intervient vite dans le quartier ${currentSection.name} ! Problème de disjoncteur résolu en 30 minutes. Top !`}"</p>
+                    <p class="text-right font-medium text-gray-800 mt-auto">- {`Ahmed K., ${currentSection.name}, ${currentCity.cityName}`}</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl text-left flex flex-col h-full">
+                    <p class="text-gray-600 italic mb-4 flex-grow">"{`Installation de nouvelles prises dans notre bureau à ${currentSection.name}. Travail propre et rapide par Elec Express. Je recommande pour les pros du quartier.`}"</p>
+                    <p class="text-right font-medium text-gray-800 mt-auto">- {`Société Innovatech, ${currentSection.name}`}</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl text-left flex flex-col h-full">
+                    <p class="text-gray-600 italic mb-4 flex-grow">"{`Très content du service pour la mise en conformité de mon appartement à ${currentSection.name}. L'électricien de Elec Express a été clair et pédagogue.`}"</p>
+                    <p class="text-right font-medium text-gray-800 mt-auto">- {`Chloé M., ${currentSection.name}, ${currentCity.cityName}`}</p>
+                </div>
             </div>
         </div>
     </section>
 
-    {/* FAQ Section - Styling remains as per your last preference */}
     <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6 max-w-3xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{faqTitle}</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">{`FAQ – Électricien Quartier ${currentSection.name}`}</h2>
             <div class="space-y-6">
-                {sectionFaqItems.map((item, index) => (
-                    <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group" open={index === 0}>
-                        <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
-                            <span>{item.q}</span>
-                            <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </span>
-                        </summary>
-                        <p class="text-gray-600 mt-3 leading-relaxed">{item.a}</p>
-                    </details>
-                ))}
+                <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group" open={true}>
+                    <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
+                        <span>{`Couvrez-vous vraiment tout le quartier de ${currentSection.name} ?`}</span>
+                        <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">{`Oui, nos équipes interviennent régulièrement et sans exception dans l'ensemble du quartier ${currentSection.name} à ${currentCity.cityName}.`}</p>
+                </details>
+                <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group">
+                    <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
+                        <span>{`Y a-t-il des frais de déplacement supplémentaires pour ${currentSection.name} ?`}</span>
+                        <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">{`Non, pour les interventions dans le quartier ${currentSection.name}, nos frais de déplacement sont inclus dans nos forfaits standards pour ${currentCity.cityName}.`}</p>
+                </details>
+                <details class="bg-white p-4 md:p-6 rounded-2xl shadow-xl group">
+                    <summary class="flex justify-between items-center font-semibold text-yellow-700 cursor-pointer hover:text-yellow-800 list-none">
+                        <span>{`Quel est le meilleur moment pour vous contacter depuis ${currentSection.name} ?`}</span>
+                        <span class="transform transition-transform duration-300 group-open:rotate-180 text-yellow-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="text-gray-600 mt-3 leading-relaxed">{`Pour les urgences à ${currentSection.name}, nous sommes joignables 24/7. Pour les projets, contactez-nous durant les heures de bureau pour un devis rapide.`}</p>
+                </details>
             </div>
         </div>
     </section>
 
-    {/* Final CTA Section - Remains as per your provided code (with two buttons) */}
     <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6 text-center">
             <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl max-w-3xl mx-auto">
-                <h2 class="text-2xl font-bold text-gray-900 mb-2">{finalCtaHeading}</h2>
-                <p class="text-lg text-gray-700 mb-10">{finalCtaText}</p>
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Contactez-nous !</h2>
+                <p class="text-lg text-gray-700 mb-10">{`Habitants et professionnels du quartier ${currentSection.name}, ne cherchez plus votre électricien !`}</p>
                 <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                     <a href={finalCtaButton2Link} 
-                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-lg">
-                        {finalCtaButton2Text}
-                    </a>
-                    <a href={finalCtaButton1Link} 
-                       class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-white hover:bg-yellow-700 text-lg">
-                        {finalCtaButton1Text}
-                    </a>
+                       <a href="tel:+32470424242" 
+                           class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-lg">
+                            {`Appelez votre expert local au 0470/42.42.42`}
+                       </a>
+                       <a href="/contact/" 
+                           class="px-8 py-3 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-white hover:bg-yellow-700 text-lg">
+                            {`Devis Gratuit pour ${currentSection.name}`}
+                       </a>
                 </div>
             </div>
         </div>
