@@ -1,0 +1,83 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const meta_title = "Blog Électricité | Conseils & Astuces | Elec Express";
+const meta_description = "Découvrez nos articles et conseils sur l'électricité, les installations électriques, la mise en conformité et le dépannage en Belgique.";
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Layout meta_title={meta_title} meta_description={meta_description}>
+  <!-- Hero Section -->
+  <section class="relative bg-cover bg-center text-white" style="background-image: url('/elec-express-votre-electricien.png')">
+    <div class="absolute inset-0 bg-blue-900 opacity-60"></div>
+    <div class="container mx-auto px-6 py-20 md:py-28 text-center relative z-10">
+      <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-4 mb-6">
+        <div class="flex items-center text-xs sm:text-sm text-gray-100">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span>Conseils & Astuces</span>
+        </div>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+        Blog <span class="text-yellow-400">Elec Express</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-100 max-w-3xl mx-auto">
+        Conseils, astuces et guides pratiques sur l'<strong>électricité</strong>, 
+        les <strong>installations électriques</strong> et la <strong>mise en conformité</strong> en <strong>Belgique</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Blog Posts Grid -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-6">
+      {sortedPosts.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {sortedPosts.map((post, index) => (
+            <BlogCard post={post} index={index} />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-16">
+          <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <p class="text-xl text-gray-600">Aucun article disponible pour le moment.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contact" class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-6 text-center">
+      <div class="bg-gray-50 p-6 md:p-12 rounded-3xl shadow-xl max-w-3xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          Besoin d'un <strong class="text-yellow-500">Électricien</strong> ?
+        </h2>
+        <p class="text-base sm:text-lg text-gray-700 mb-10">
+          N'attendez pas ! Contactez <strong>Elec Express</strong> dès aujourd'hui pour une
+          <strong>intervention rapide</strong> ou un <strong>devis gratuit</strong> pour vos <strong>travaux
+          électriques</strong> en <strong>Belgique</strong>.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+          <a href="tel:+32470424242" title="Téléphone Elec Express"
+            class="w-full sm:w-auto px-6 py-3 sm:px-8 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-base sm:text-lg">
+            📞 0470/42.42.42
+          </a>
+          <a href="/contact/" title="Contactez Elec Express"
+            class="w-full sm:w-auto px-6 py-3 sm:px-8 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out bg-yellow-500 text-white hover:bg-yellow-600 text-base sm:text-lg">
+            Demander un Devis
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
